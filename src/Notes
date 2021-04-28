@@ -1,0 +1,7 @@
+Lancer le serveur depuis /src, avec "nodemon index.js"
+---
+Le fichier testuser.js doit etre dans un dossier separé.
+Dans le fichier testuser.js, soit on utilise "require" soit on utilise "import { describe, it } from 'mocha';" selon les versions. Utiliser "require".
+mocha a été installé au niveau global (npm install -g), donc il faut lancer le fichier avec "npm run test"
+Sinon, on pouvait le lancer avec "mocha run test" (via script dans package.json)
+---

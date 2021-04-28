@@ -1,0 +1,30 @@
+{
+  "name": "birdy",
+  "version": "1.0.0",
+  "description": "Projet Birdy coté serveur",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test",
+    "test:watch": "mocha test -w",
+    "serve": "node src/index.js"
+  },
+  "author": "Loi Alessia et Pironin Julie",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.35",
+    "chai": "^4.3.3",
+    "chai-http": "^4.3.0",
+    "cookie-parser": "^1.4.5",
+    "db": "^3.3.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mocha": "^8.3.2",
+    "nedb": "^1.8.0",
+    "path": "^0.12.7",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.2.1"
+  }
+}
