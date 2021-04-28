@@ -13,6 +13,7 @@ export default function Login() {
         event.preventDefault();
     }
 
+    /*
     return (
         <div className="Login">
         <Form onSubmit={handleSubmit}>
@@ -38,5 +39,7 @@ export default function Login() {
             </Button>
         </Form>
         </div>
+        
     );
+    */
 }

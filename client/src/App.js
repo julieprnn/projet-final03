@@ -4,8 +4,14 @@ import Login from './LogIn';
 
 function App() {
   return (  
-    <Login/>
-    
+    <div className="App">
+      <header className="App-header">
+        <p>
+          Test
+        </p>
+      </header>
+    </div>
+
   );
 }
 
