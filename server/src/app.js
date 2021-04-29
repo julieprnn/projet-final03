@@ -7,7 +7,7 @@ const api_users = require('./api_users');
 const api_plumes = require('./api_plumes');
 const api_rdvLecture = require('./api_rdvLecture');
 
-// Test coucou Julie 
+// Test coucou Julie OK
 
 //-----------------------DATABASE---------------------------------
 
