@@ -1,4 +1,29 @@
 import React, {useState} from "react";
+import './index.css';
+//import fonds from './Utils/IMG_4947.png';
+import styled from "styled-components";
+
+const Fond = styled.div`
+position: absolute;
+width: 1440px;
+height: 1024px;
+left: 0px;
+top: 0px;
+
+background: #F9D6B6;
+`;
+
+const Image =styled.div`
+position: absolute;
+width: 769px;
+height: 1024px;
+left: -16px;
+top: 0px;
+
+background: url(IMG_4947.jpg);
+opacity: 0.7;
+`
+;
 
 export default function Login() {
     const [email,setEmail] = useState("");
@@ -13,33 +38,13 @@ export default function Login() {
         event.preventDefault();
     }
 
-    /*
     return (
-        <div className="Login">
-        <Form onSubmit={handleSubmit}>
-            <Form.Group size="lg" controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-                autoFocus
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            </Form.Group>
-            <Form.Group size="lg" controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            </Form.Group>
-            <Button block size="lg" type="submit" disabled={!validateForm()}>
-            Login
-            </Button>
-        </Form>
-        </div>
+        <Fond>
+            <div className="Login">
+
+             </div>
+        </Fond>
+       
         
     );
-    */
 }
