@@ -65,7 +65,7 @@ app.get('/', (req,res,next) => {
 
 app.use('/users', api_users.default(db)); // gestion des users, friends, followers avec sqlite3
 app.use('/plumes', api_plumes.default(db2)); // gestion des plumes avec mongoDB
-app.use('/rdv', api_rdvLecture.default(db, db2)); // gestion des rdvLecture avec mongoDB, followers avec sqlite3
+app.use('/rdv', api_rdvLecture.default(db2)); // gestion des rdvLecture avec mongoDB
 
 
 //-----------------------TESTS ROUTES---------------------------------

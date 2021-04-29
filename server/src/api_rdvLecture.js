@@ -1,18 +1,19 @@
 const express = require('express');
-const RdvLecture = require("./entities/rdvLecture");
-const followers = require("./entities/followers"); //check si ça marche
-const users = require("./entities/users"); //check si ça marche
+const RdvLecture = require("./entities/RdvLecture");
+const followers = require("./entities/followers");
+const users = require("./entities/users");
 const handlingRes = require("./entities/handlingRes");
+
 const router = express.Router();
 
 
-function init(dbSqLite, dbMongo) {
+
+function init(db) {
 
     // On utilise JSON
     router.use(express.json());
     
-    // simple logger for this router's requests
-    // all requests to this router will first hit this middleware
+    // Affichage pour toute requête sur http://localhost:4000/rdv
     router.use((req, res, next) => {
         console.log('----------------------------------------------------');
         console.log('API_RDV-LECTURE -----> method : %s, path : %s', req.method, req.path);
@@ -21,46 +22,49 @@ function init(dbSqLite, dbMongo) {
     });
 
 
-//-------------------------------------------------------------------------------------------------
-const rdvLecture = new RdvLecture.default(dbMongo);
-//-------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------
+    //                                        RdvLecture management
+    //-------------------------------------------------------------------------------------------------
+
+    // Instanciation de la classe RdvLecture en passant en paramètre le database mongoDB
+    const rdvLecture = new RdvLecture.default(db);
+
+
 
     router
         .put("/", async (req, res) => {
             try{
-                const {user_id, speaker, title, text, bookId, authorId, image, dateStart, dateStop, link} = req.body;
+                const { userId, speaker, title, text, bookId, authorId, image, dateStart, dateStop, link} = req.body;
 
                 // Erreur : paramètre manquant
-                if (!user_id || !speaker || !title || !bookId || !authorId || !dateStart || !dateStop || !link) {
-                    handlingRes.default(res, 400);
+                if (!userId || !speaker || !title || !bookId || !authorId || !dateStart || !dateStop || !link) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId, speaker, title, bookId, authorId, dateStart, dateStop, link>");
                     return;
                 }
                 // Insertion de l'utilisateur dans la BD
-                else {    
-                    rdvLecture.createRdvLecture(user_id, speaker, title, text, bookId, authorId, image, dateStart, dateStop, link)
-                    .then((title) => res.status(200).send({ title: title }))
-                    .catch((err) => res.status(500).send(err));
-
-                    let tabIdFollowers = await users.getFollowersList(authorId, "authors");
-                    if (tabIdFollowers.length != 0) {                    
-                        tabIdFollowers.forEach((row) => {
-                            await users.addNotification(row, "salut ca t interesse!");
-                        });
-                    }
-                    tabIdFollowers = await users.getFollowersList(bookId, "books");
-                    if (tabIdFollowers.length != 0) {                    
-                        tabIdFollowers.forEach((row) => {
-                            await users.addNotification(row, "salut ca t interesse!");
-                        });
-                    }
+                if(!await rdvLecture.createRdvLecture(userId, speaker, title, text, bookId, authorId, image, dateStart, dateStop, link)) {
+                    handlingRes.default(res, 409, "Problème lors de l'insertion du rdvLecture dans la base de données");
+                    return;
+                } else {
+                    handlingRes.default(res, 200, "Insertion du rdvLecture dans la base de données rdvLecture réussie!");
                 }
-            } catch{
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne",
-                    //details: (e || "Erreur inconnue").toString()
-                });
+
+                let tabIdFollowers = await users.getFollowersList(authorId, "authors");
+                if (tabIdFollowers.length != 0) {                    
+                    tabIdFollowers.forEach((row) => {
+                        users.addNotification(row, "salut ca t interesse!");
+                    });
+                }
+                tabIdFollowers = await users.getFollowersList(bookId, "books");
+                if (tabIdFollowers.length != 0) {                    
+                    tabIdFollowers.forEach((row) => {
+                        users.addNotification(row, "salut ca t interesse!");
+                    });
+                }
+            } 
+            catch (e) {
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -69,14 +73,11 @@ const rdvLecture = new RdvLecture.default(dbMongo);
         .post("/:rdvLecture_id", async (req, res) => {
             try {
                 const rdvLectureId = req.params.rdvLecture_id;
-                const { speaker, title, text, image, dateStart, dateStop, userId, link } = req.body;
+                const { userId, speaker, title, text, image, dateStart, dateStop, link } = req.body;
                 
                 // Erreur : paramètre manquant
-                if (!speaker || !title || !text || !image || !dateStart || !dateStop || !userId || !link) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et login2 nécessaires"
-                    });
+                if (!userId || !speaker || !title || !text || !image || !dateStart || !dateStop || !link) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId, speaker, title, text, image, dateStart, dateStop, link>");
                     return;
                 }
 
@@ -89,11 +90,7 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 }
 
                 if(! await rdvLecture.modifyRdvLecture(rdvLectureId, speaker, title, text, image, dateStart, dateStop, link)) {
-                    res.status(400).json({
-                        status: 400,
-                        message: "Erreur pendant modif rdv"
-                    });
-
+                    handlingRes.default(res, 409, "Problème lors de la modification du rdvLecture dans la base de données");
                 } else {
                     console.log('rdv modif');
                     res.status(200).json({
@@ -103,12 +100,8 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -117,20 +110,17 @@ const rdvLecture = new RdvLecture.default(dbMongo);
 
             try {
                 const rdvLectureId = req.params.rdvLecture_id;
-                const { user_id } = req.body;
+                const { userId } = req.body;
                 
                 console.log(rdvLectureId, user_id);
 
                 // Erreur : paramètre manquant
-                if (!user_id) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et login2 nécessaires"
-                    });
+                if (!userId) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId>");
                     return;
                 }
 
-                if(!await rdvLecture.rdvIsMine(user_id, rdvLectureId)) {
+                if(!await rdvLecture.rdvIsMine(userId, rdvLectureId)) {
                     res.status(401).json({
                         status: 401,
                         message: " not mine non 6 autorizzato"
@@ -139,11 +129,7 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 }
 
                 if(! await rdvLecture.deleteRdvLecture(rdvLectureId)) {
-                    res.status(400).json({
-                        status: 400,
-                        message: "Erreur pendant suppression rdv"
-                    });
-
+                    handlingRes.default(res, 409, "Problème lors de la suppression du rdvLecture dans la base de données");
                 } else {
                     console.log('rdv supprimee');
                     res.status(200).json({
@@ -153,12 +139,8 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -177,10 +159,7 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 
                 // Erreur : paramètre manquant
                 if (!userId) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et book nécessaires"
-                    });
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId>");
                     return;
                 }
 
@@ -217,12 +196,8 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -234,10 +209,7 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 
                 // Erreur : paramètre manquant
                 if (!userId) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et login2 nécessaires"
-                    });
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId>");
                     return;
                 }
 
@@ -261,12 +233,8 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });     
 
@@ -279,10 +247,7 @@ const rdvLecture = new RdvLecture.default(dbMongo);
 
                 // Erreur : paramètre manquant
                 if (!userId) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et login2 nécessaires"
-                    });
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId>");
                     return;
                 }
 
@@ -319,12 +284,8 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -338,10 +299,7 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 
                 // Erreur : paramètre manquant
                 if (!entity || !entityId) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et book nécessaires"
-                    });
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <entity, entityId>");
                     return;
                 }
                 
@@ -354,7 +312,7 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                     return;
                 }
 
-                if(! await users.entityExists(entity_id, entity)) {
+                if(! await users.entityExists(entityId, entity)) {
                     res.status(401).json({
                         status: 401,
                         message: "non trouve"
@@ -386,15 +344,13 @@ const rdvLecture = new RdvLecture.default(dbMongo);
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });     
 
+
+ 
     return router;
 }
 

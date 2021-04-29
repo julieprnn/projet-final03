@@ -1,7 +1,9 @@
 const express = require('express');
 const Plumes = require("./entities/plumes");
 const handlingRes = require("./entities/handlingRes");
+
 const router = express.Router();
+
 
 
 function init(db) {
@@ -9,54 +11,54 @@ function init(db) {
     // On utilise JSON
     router.use(express.json());
     
-    // simple logger for this router's requests
-    // all requests to this router will first hit this middleware
+    // Affichage pour toute requête sur http://localhost:4000/plumes
     router.use((req, res, next) => {
         console.log('----------------------------------------------------');
         console.log('API_PLUMES -----> method : %s, path : %s', req.method, req.path);
         console.log('\nBody :', req.body);
-        console.log(db.version);
         next();
     });
 
 
+    //-------------------------------------------------------------------------------------------------
+    //                                        Plumes management
+    //-------------------------------------------------------------------------------------------------
+
+    // Instanciation de la classe Plumes en passant en paramètre le database mongoDB
     const plumes = new Plumes.default(db);
 
-    // {"userId":"055", "typeText":"plume", "text":"Ciao mamma ti voglio bene", "image":"cuore.jpg", "comments":"[]", "likes":"0"}
+
 
     router
         .put("/", async (req, res) => {
-            try{
-                const {userId, typeText, text, image, date, entity_id, typeEntity, comments, spoiler} = req.body;
+
+            try {
+                const {userId, typeText, text, image, date, entityId, typeEntity, comments, spoiler} = req.body;
 
                 // Erreur : paramètre manquant
                 if (!userId || !typeText || !text) {
-                    handlingRes.default(res, 400);
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId, typeText, text>");
                     return;
                 } 
                 
-                // Insertion de l'utilisateur dans la BD
-                else {    
-                    plumes.postPlume(userId, typeText, text, image, date,  entity_id, typeEntity, comments, spoiler)
-                    .then((user_id) => res.status(200).send({ id: user_id }))
-                    .catch((err) => res.status(500).send(err));
-                
-                    let tabIdFollowers = await users.getFollowersList(entity_id, typeEntity);
-                    if (tabIdFollowers.length != 0) {                    
-                        tabIdFollowers.forEach((row) => {
-                            await users.addNotification(row, "salut ca t interesse!");
-                        });
-                    }
-
+                if(!await plumes.postPlume(userId, typeText, text, image, date,  entityId, typeEntity, comments, spoiler)) {
+                    handlingRes.default(res, 409, "Problème lors de l'insertion de la plume dans la base de données");
+                    return;
+                } else {
+                    handlingRes.default(res, 200, "Insertion de la plume dans la base de données plumes réussie!");
                 }
 
-            } catch{
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne",
-                    //details: (e || "Erreur inconnue").toString()
-                });
+                let tabIdFollowers = await users.getFollowersList(entityId, typeEntity);
+                if (tabIdFollowers.length != 0) {                    
+                    tabIdFollowers.forEach((row) => {
+                        users.addNotification(row, "salut ca t interesse!");
+                    });
+                }
+
+            }
+            catch (e) {
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -69,7 +71,7 @@ function init(db) {
 
                 // Erreur : paramètre manquant
                 if (!plumeId || !userId || !text) {
-                    handlingRes.default(res, 400);
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <plumeId, userId, text>");
                     return;
                 } 
 
@@ -86,25 +88,15 @@ function init(db) {
                 } 
 
                 if(!await plumes.commentPlume(plumeId, userId, text, spoiler)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "commento non inserito"
-                    });
+                    handlingRes.default(res, 409, "Problème lors de l'insertion du commentaire dans la base de données");
                     return;
                 } else {
-                    console.log('comment inserito');
-                    res.status(200).json({
-                        status: 200,
-                        message: "comment inserito"
-                    });
+                    handlingRes.default(res, 200, "Insertion du commentaire dans la base de données plumes réussie!");
                 }
-            } catch{
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne"
-                    //details: (e || "Erreur inconnue").toString()
-                });
+            }
+            catch (e) {
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -113,11 +105,11 @@ function init(db) {
             try {
                 const plumeId = req.params.plume_id;
                 const { userId, text, newText, spoiler } = req.body;
-                let {newSpoiler} = req.body;
+                let { newSpoiler } = req.body;
 
                 // Erreur : paramètre manquant
                 if (!plumeId || !userId || !text || !newText || !spoiler) {
-                    handlingRes.default(res, 400);
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <plumeId, userId, text, newText, spoiler>");
                     return;
                 } 
 
@@ -134,10 +126,7 @@ function init(db) {
                 } 
 
                 if(!await plumes.modifyCommentPlume(plumeId, userId, text, newText, spoiler, newSpoiler)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "commento modif probleme"
-                    });
+                    handlingRes.default(res, 409, "Problème lors de la modification du commentaire dans la base de données");
                     return;
                 } else {
                     console.log('maj ok');
@@ -146,13 +135,10 @@ function init(db) {
                         message: "maj ok"
                     });
                 }
-            } catch{
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne",
-                    //details: (e || "Erreur inconnue").toString()
-                });
+            } 
+            catch (e) {
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -164,7 +150,7 @@ function init(db) {
 
                 // Erreur : paramètre manquant
                 if (!plumeId || !userId || !text) {
-                    handlingRes.default(res, 400);
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <plumeId, userId, text>");
                     return;
                 } 
 
@@ -177,10 +163,7 @@ function init(db) {
                 } 
 
                 if(!await plumes.deleteCommentPlume(plumeId, userId, text)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "commento cancellazione probleme"
-                    });
+                    handlingRes.default(res, 409, "Problème lors de la suppression du commentaire dans la base de données");
                     return;
                 } else {
                     console.log('maj ok');
@@ -189,13 +172,10 @@ function init(db) {
                         message: "maj ok (pas forcement cancellato)"
                     });
                 }
-            } catch{
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne"
-                    //details: (e || "Erreur inconnue").toString()
-                });
+            } 
+            catch (e) {
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -204,18 +184,15 @@ function init(db) {
         .post("/:plume_id", async (req, res) => {
             try {
                 const plumeId = (req.params.plume_id);
-                const { user_id, text, image } = req.body;
+                const { userId, text, image } = req.body;
                 
                 // Erreur : paramètre manquant
-                if (!user_id || !(text || image)) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et login2 nécessaires"
-                    });
+                if (!userId || !(text || image)) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId, text ou image>");
                     return;
                 }
 
-                if(!await plumes.plumeIsMine(user_id, plumeId)) {
+                if(!await plumes.plumeIsMine(userId, plumeId)) {
                     res.status(401).json({
                         status: 401,
                         message: "plume not mine non 6 autorizzato"
@@ -224,11 +201,7 @@ function init(db) {
                 }
 
                 if(! await plumes.modifyPlume(plumeId, text, image)) {
-                    res.status(400).json({
-                        status: 400,
-                        message: "Erreur pendant modif plume"
-                    });
-
+                    handlingRes.default(res, 409, "Problème lors de la modification de la plume dans la base de données");
                 } else {
                     console.log('plume modif');
                     res.status(200).json({
@@ -238,12 +211,8 @@ function init(db) {
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -251,25 +220,20 @@ function init(db) {
         .get("/", async (req, res) => {
 
             try {
-                // nb. impossible calculer l id a partir d ici... on rentre le bon id depuis le front!
-                // il faut donc s assurer d abord que l user existe
-                let { user_id, tabIdAmis, tabIdFollowed_authors, tabIdFollowed_books, n } = req.body; //n = nombre de lignes à visualiser
+                let { userId, tabIdAmis, tabIdFollowedAuthors, tabIdFollowedBooks, n } = req.body; //n = nombre de lignes à visualiser
                 
                 // Erreur : paramètre manquant
-                if (!user_id || !tabIdAmis || !tabIdFollowed_authors || !tabIdFollowed_books) { //les tab peuvent etre vides, pas soucis, mais pas undefined
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et login2 nécessaires"
-                    });
+                if (!userId || !tabIdAmis || !tabIdFollowedAuthors || !tabIdFollowedBooks) { //les tab peuvent etre vides, pas soucis, mais pas undefined
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId, tabIdAmis, tabIdFollowedAuthors, tabIdFollowedBooks>");
                     return;
                 }
 
-                // paramètre manquant
+                // Paramètre initialisé avec une valeur par defaut
                 if (!n) {
                     n = 10;
                 }
 
-                let tabPlumes = await plumes.getHomePlumesList(user_id, tabIdAmis, tabIdFollowed_authors, tabIdFollowed_books, n);
+                let tabPlumes = await plumes.getHomePlumesList(userId, tabIdAmis, tabIdFollowedAuthors, tabIdFollowedBooks, n);
 
                 if (tabPlumes.length != 0) {                    
                     res.status(200).json({
@@ -287,12 +251,8 @@ function init(db) {
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -301,25 +261,20 @@ function init(db) {
 
             try {
                 const login = req.params.user_id;
-                // nb. impossible calculer l id a partir d ici... on rentre le bon id depuis le front!
-                // il faut donc s assurer d abord que l user existe
-                let { user_id, n } = req.body; //n = nombre de lignes à visualiser
+                const { userId } = req.body;
+                let { n } = req.body;   // n = nombre de lignes à visualiser
                 
                 // Erreur : paramètre manquant
-                if (! login || !user_id) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et login2 nécessaires"
-                    });
+                if (! login || !userId) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <login, userId>");
                     return;
                 }
 
-                // paramètre manquant
                 if (!n) {
                     n = 10;
                 }
 
-                let tabPlumes = await plumes.getThisUserPlumesList(user_id, n);
+                let tabPlumes = await plumes.getThisUserPlumesList(userId, n);
 
                 if (tabPlumes.length != 0) {                    
                     res.status(200).json({
@@ -337,12 +292,8 @@ function init(db) {
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -350,23 +301,16 @@ function init(db) {
         .get("/:entity/:entity_id", async (req, res) => {    
 
             try {
-
-                // nb. impossible calculer l id a partir d ici... on rentre le bon id depuis le front!
-                // il faut donc s assurer d abord que l user existe
                 const entity = req.params.entity;
-                const entity_id = req.params.entity_id;
-                let { spoiler, n } = req.body; //n = nombre de lignes à visualiser
+                const entityId = req.params.entity_id;
+                let { spoiler, n } = req.body;  //n = nombre de lignes à visualiser
                 
                 // Erreur : paramètre manquant
-                if (!entity || !entity_id) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et book nécessaires"
-                    });
+                if (!entity || !entityId) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <entity, entityId>");
                     return;
                 }
                 
-                // Erreur : paramètre manquant
                 if (entity != "books" && entity != "authors") {
                     res.status(400).json({
                         status: 400,
@@ -379,15 +323,12 @@ function init(db) {
                     spoiler = false ;
                 }
 
-                // paramètre manquant
                 if (!n) {
                     n = 10;
                 }
 
-                console.log("ce qu on envoie a la fonction :", entity_id, entity, spoiler, n);
-                let tabPlumes = await plumes.getAllPlumesList(entity_id, entity, spoiler, n);
+                let tabPlumes = await plumes.getAllPlumesList(entityId, entity, spoiler, n);
 
-                console.log("tab = ", tabPlumes);
                 if (tabPlumes.length != 0) {                    
                     res.status(200).json({
                         status: 200,
@@ -404,12 +345,8 @@ function init(db) {
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
 
@@ -417,18 +354,15 @@ function init(db) {
         .delete("/:plume_id", async (req, res) => {
             try {
                 const plumeId = (req.params.plume_id);
-                const { user_id } = req.body;
+                const { userId } = req.body;
                 
                 // Erreur : paramètre manquant
-                if (!user_id) {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : paramètre manquant, login1 et login2 nécessaires"
-                    });
+                if (!userId) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId>");
                     return;
                 }
 
-                if(!await plumes.plumeIsMine(user_id, plumeId)) {
+                if(!await plumes.plumeIsMine(userId, plumeId)) {
                     res.status(401).json({
                         status: 401,
                         message: "plume not mine non 6 autorizzato"
@@ -437,11 +371,7 @@ function init(db) {
                 }
 
                 if(! await plumes.deletePlume(plumeId)) {
-                    res.status(400).json({
-                        status: 400,
-                        message: "Erreur pendant suppression plume"
-                    });
-
+                    handlingRes.default(res, 409, "Problème lors de la suppression de la plume dans la base de données");
                 } else {
                     console.log('plume supprimee');
                     res.status(200).json({
@@ -451,14 +381,11 @@ function init(db) {
                 }
             }
             catch (e) {
-                // Toute autre erreur
-                res.status(500).json({
-                    status: 500,
-                    message: "Erreur interne L",
-                    details: (e || "Erreur inconnue").toString()
-                });
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
             }
         });
+
 
 
     return router;

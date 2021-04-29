@@ -11,15 +11,25 @@ var HTTP_CODE = {
   500 : 'Internal Server Error'
 }
 
-function handlingRes(res, statusCode, msg) {
+function handlingRes(res, statusCode, msg, data) {
   if (!msg){
     msg = HTTP_CODE[statusCode];
   }
-  res.status(statusCode).send({
+  if (!data) {
+    res.status(statusCode).send({
     "status": statusCode,
     "message": msg
-  });
-  console.log('# ', statusCode, ':', msg);
+    });
+    console.log('# ', statusCode, ':', msg);
+  }
+  else {
+    res.status(statusCode).send({
+      "status": statusCode,
+      "message": msg,
+      "data" : data
+      });
+      console.log('# ', statusCode, ':', msg, "\n", data);
+  }
 }
 
 exports.default = handlingRes;
