@@ -30,6 +30,7 @@ function init(db) {
 
 
     router
+        // Création d'une nouvelle plume (tweet)
         .put("/", async (req, res) => {
 
             try {
@@ -41,6 +42,7 @@ function init(db) {
                     return;
                 } 
                 
+                // Insertion de la plume dans la table plumes
                 if(!await plumes.postPlume(userId, typeText, text, image, date,  entityId, typeEntity, comments, spoiler)) {
                     handlingRes.default(res, 409, "Problème lors de l'insertion de la plume dans la base de données");
                     return;
@@ -48,13 +50,13 @@ function init(db) {
                     handlingRes.default(res, 200, "Insertion de la plume dans la base de données plumes réussie!");
                 }
 
+                // Envoi d'une notification à tous les lecteurs (user) intéressés par l'auteur ou le livre mentionné
                 let tabIdFollowers = await users.getFollowersList(entityId, typeEntity);
                 if (tabIdFollowers.length != 0) {                    
                     tabIdFollowers.forEach((row) => {
-                        users.addNotification(row, "salut ca t interesse!");
+                        users.addNotification(row, "Lecture conseillée : '" + title + "'");
                     });
                 }
-
             }
             catch (e) {
                 // Erreur : erreur du server
@@ -63,6 +65,7 @@ function init(db) {
         });
 
     router
+        // Création d'un commentaire lié à une plume
         .put("/:plume_id/comment", async (req, res) => {
             try {
                 const plumeId = req.params.plume_id;
@@ -75,18 +78,18 @@ function init(db) {
                     return;
                 } 
 
+                // Vérification si la plume existe dans la table plumes
                 if(!await plumes.existsPlume(plumeId)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "plume inexistante"
-                    });
+                    handlingRes.default(res, 404, "Plume non trouvée dans la base de données");
                     return;
                 } 
 
+                // Paramètre manquant : initialisation par défaut
                 if (spoiler === undefined) {
                     spoiler = false ;
                 } 
 
+                // Insertion du commentaire de la plume dans la table plumes
                 if(!await plumes.commentPlume(plumeId, userId, text, spoiler)) {
                     handlingRes.default(res, 409, "Problème lors de l'insertion du commentaire dans la base de données");
                     return;
@@ -101,6 +104,7 @@ function init(db) {
         });
 
     router
+        // Modification d'un commentaire lié à une plume
         .post("/:plume_id/comment", async (req, res) => {
             try {
                 const plumeId = req.params.plume_id;
@@ -113,27 +117,23 @@ function init(db) {
                     return;
                 } 
 
+                // Vérification si la plume existe dans la table plumes
                 if(!await plumes.existsPlume(plumeId)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "plume inexistante"
-                    });
+                    handlingRes.default(res, 404, "Plume non trouvée dans la base de données");
                     return;
                 } 
 
+                // Paramètre manquant : initialisation par défaut
                 if (newSpoiler === undefined) {
                     newSpoiler = spoiler ;
                 } 
 
+                // Mise à jour des champs du commentaire de la plume dans la table plumes
                 if(!await plumes.modifyCommentPlume(plumeId, userId, text, newText, spoiler, newSpoiler)) {
                     handlingRes.default(res, 409, "Problème lors de la modification du commentaire dans la base de données");
                     return;
                 } else {
-                    console.log('maj ok');
-                    res.status(200).json({
-                        status: 200,
-                        message: "maj ok"
-                    });
+                    handlingRes.default(res, 200, "Mise à jour du commentaire dans la base de données réussie!");
                 }
             } 
             catch (e) {
@@ -143,6 +143,7 @@ function init(db) {
         });
 
     router
+        // Suppression d'un commentaire de plume
         .delete("/:plume_id/comment", async (req, res) => {
             try {
                 const plumeId = req.params.plume_id;
@@ -154,23 +155,18 @@ function init(db) {
                     return;
                 } 
 
+                // Vérification si la plume existe dans la table plumes
                 if(!await plumes.existsPlume(plumeId)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "plume inexistante"
-                    });
+                    handlingRes.default(res, 404, "Plume non trouvée dans la base de données");
                     return;
-                } 
+                }
 
+                // Suppression du commentaire de la plume de la table plumes
                 if(!await plumes.deleteCommentPlume(plumeId, userId, text)) {
                     handlingRes.default(res, 409, "Problème lors de la suppression du commentaire dans la base de données");
                     return;
                 } else {
-                    console.log('maj ok');
-                    res.status(200).json({
-                        status: 200,
-                        message: "maj ok (pas forcement cancellato)"
-                    });
+                    handlingRes.default(res, 200, "Mise à jour ou suppression du commentaire dans la base de données réussie!");
                 }
             } 
             catch (e) {
@@ -180,7 +176,7 @@ function init(db) {
         });
 
     router
-        //modify
+        // Modification d'une plume
         .post("/:plume_id", async (req, res) => {
             try {
                 const plumeId = (req.params.plume_id);
@@ -192,11 +188,9 @@ function init(db) {
                     return;
                 }
 
+                // Vérification si ce lecteur (user) est l'auteur de la plume dans la table plumes
                 if(!await plumes.plumeIsMine(userId, plumeId)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "plume not mine non 6 autorizzato"
-                    });
+                    handlingRes.default(res, 406, "Modification de plume non autorisé");
                     return;
                 }
 
@@ -217,36 +211,30 @@ function init(db) {
         });
 
     router
+        // Affichage de la liste des plumes : plumes d'amis, plumes des favoris, NO SPOILER
         .get("/", async (req, res) => {
 
             try {
-                let { userId, tabIdAmis, tabIdFollowedAuthors, tabIdFollowedBooks, n } = req.body; //n = nombre de lignes à visualiser
+                let { userId, tabIdAmis, tabIdFollowedAuthors, tabIdFollowedBooks, n } = req.body; // n = nombre de lignes à visualiser
                 
                 // Erreur : paramètre manquant
-                if (!userId || !tabIdAmis || !tabIdFollowedAuthors || !tabIdFollowedBooks) { //les tab peuvent etre vides, pas soucis, mais pas undefined
+                if (!userId || !tabIdAmis || !tabIdFollowedAuthors || !tabIdFollowedBooks) { // les tab peuvent etre vides, pas soucis, mais pas undefined
                     handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId, tabIdAmis, tabIdFollowedAuthors, tabIdFollowedBooks>");
                     return;
                 }
 
-                // Paramètre initialisé avec une valeur par defaut
+                // Paramètre manquant : initialisation par défaut
                 if (!n) {
                     n = 10;
                 }
 
-                let tabPlumes = await plumes.getHomePlumesList(userId, tabIdAmis, tabIdFollowedAuthors, tabIdFollowedBooks, n);
-
-                if (tabPlumes.length != 0) {                    
-                    res.status(200).json({
-                        status: 200,
-                        message: "liste de plumes trouvée",
-                        listPlumes: tabPlumes
-                    });
+                // Obtention de la liste de plumes du lecteur (user)
+                let tabP = await plumes.getHomePlumesList(userId, tabIdAmis, tabIdFollowedAuthors, tabIdFollowedBooks, n);
+                if (tabP.length != 0) {                    
+                    handlingRes.default(res, 200, "Liste de plumes trouvée dans la base de données", tabP);
                 }
                 else {
-                    res.status(401).json({
-                        status: 401,
-                        message: "liste inexistant"
-                    });
+                    handlingRes.default(res, 404, "Liste de plumes vide dans la base de données");
                 return;
                 }
             }
@@ -257,6 +245,7 @@ function init(db) {
         });
 
     router
+        // Affichage de la liste des plumes personnelle : plumes écrites par ce lecteur (user)
         .get("/:user_id", async (req, res) => {
 
             try {
@@ -270,24 +259,18 @@ function init(db) {
                     return;
                 }
 
+                // Paramètre manquant : initialisation par défaut
                 if (!n) {
                     n = 10;
                 }
 
-                let tabPlumes = await plumes.getThisUserPlumesList(userId, n);
-
-                if (tabPlumes.length != 0) {                    
-                    res.status(200).json({
-                        status: 200,
-                        message: "liste de plumes trouvée",
-                        listPlumes: tabPlumes
-                    });
+                // Obtention de la liste de plumes du lecteur (user)
+                let tabP = await plumes.getThisUserPlumesList(userId, n);
+                if (tabP.length != 0) {                    
+                    handlingRes.default(res, 200, "Liste de plumes trouvée dans la base de données", tabP);
                 }
                 else {
-                    res.status(401).json({
-                        status: 401,
-                        message: "liste inexistant"
-                    });
+                    handlingRes.default(res, 404, "Liste de plumes vide dans la base de données");
                 return;
                 }
             }
@@ -298,6 +281,7 @@ function init(db) {
         });
 
     router
+        // Affichage de la liste des plumes écrites sur un livre ou un auteur
         .get("/:entity/:entity_id", async (req, res) => {    
 
             try {
@@ -311,36 +295,29 @@ function init(db) {
                     return;
                 }
                 
+                // Erreur : entité non réconnue
                 if (entity != "books" && entity != "authors") {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : entity inconnue"
-                    });
+                    handlingRes.default(res, 406, "Entité non réconnue");
                     return;
                 }
 
+                // Paramètre manquant : initialisation par défaut
                 if (spoiler === undefined) {
                     spoiler = false ;
                 }
 
+                // Paramètre manquant : initialisation par défaut
                 if (!n) {
                     n = 10;
                 }
 
-                let tabPlumes = await plumes.getAllPlumesList(entityId, entity, spoiler, n);
-
-                if (tabPlumes.length != 0) {                    
-                    res.status(200).json({
-                        status: 200,
-                        message: "liste de plumes trouvée",
-                        listPlumes: tabPlumes
-                    });
+                // Obtention de la liste de plumes du lecteur (user)  
+                let tabP = await plumes.getAllPlumesList(entityId, entity, spoiler, n);
+                if (tabP.length != 0) {
+                    handlingRes.default(res, 200, "Liste de plumes trouvée dans la base de données", tabP);
                 }
                 else {
-                    res.status(401).json({
-                        status: 401,
-                        message: "liste inexistant euh"
-                    });
+                    handlingRes.default(res, 404, "Liste de plumes vide dans la base de données");
                 return;
                 }
             }
@@ -351,6 +328,7 @@ function init(db) {
         });
 
     router
+        // Suppression d'une plume
         .delete("/:plume_id", async (req, res) => {
             try {
                 const plumeId = (req.params.plume_id);
@@ -362,22 +340,17 @@ function init(db) {
                     return;
                 }
 
+                // Vérification si ce lecteur (user) est l'auteur de la plume dans la table plumes
                 if(!await plumes.plumeIsMine(userId, plumeId)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "plume not mine non 6 autorizzato"
-                    });
+                    handlingRes.default(res, 406, "Modification de plume non autorisé");
                     return;
                 }
 
+                // Suppression de la plume de la table plumes
                 if(! await plumes.deletePlume(plumeId)) {
                     handlingRes.default(res, 409, "Problème lors de la suppression de la plume dans la base de données");
                 } else {
-                    console.log('plume supprimee');
-                    res.status(200).json({
-                        status: 200,
-                        message: "plume supprimee"
-                    });
+                    handlingRes.default(res, 200, "Plume supprimée avec succès !", tabN);;
                 }
             }
             catch (e) {

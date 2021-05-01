@@ -92,7 +92,7 @@ function init(db) {
                         else {
                             handlingRes.default(res, 200, "Insertion du livre dans la base de données books réussie!");
 
-                            // Envoi d'une notification à tous les lecteurs intéressés par l'auteur du livre
+                            // Envoi d'une notification à tous les lecteurs (user) intéressés par l'auteur du livre
                             const tabIdFollowers = await users.getFollowersList(idA, "authors");
                             if (tabIdFollowers.length != 0) {                    
                                 tabIdFollowers.forEach((row) => {
@@ -335,13 +335,13 @@ function init(db) {
 
                 // Erreur : le demandeur et la cible sont le même lecteur (user)
                 if (id1 === id2) {
-                    handlingRes.default(res, 406, "Demande d'amitié non authorisée");
+                    handlingRes.default(res, 406, "Demande d'amitié non autorisée");
                     return;
                 }
 
                 // Erreur : les deux lecteurs (user) sont déjà amis
                 if (await friends.existsFriendship(id1,id2)) {
-                    handlingRes.default(res, 409, "Demande d'amitié non authorisée : amitié déjà existant dans la base de données");
+                    handlingRes.default(res, 409, "Demande d'amitié non autorisée : amitié déjà existant dans la base de données");
                     return;
                 }
 
