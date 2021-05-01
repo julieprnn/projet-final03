@@ -1,0 +1,160 @@
+class AuthorsBooks {
+
+  constructor(db) {
+    this.db = db
+  
+    const createAuthorsTable = `CREATE TABLE IF NOT EXISTS "authors" (
+      "id"	INTEGER,
+      "lastname"	VARCHAR(50),
+      "firstname"	VARCHAR(50),
+      "alias" VARCHAR(50),
+      PRIMARY KEY("id" AUTOINCREMENT)
+    )`;
+    db.exec(createAuthorsTable, function(err){
+      if(err){
+        throw err;
+      }
+      console.log('Authors table ready');
+    })
+    
+    const createBooksTable = `CREATE TABLE IF NOT EXISTS "books" (
+      "id"	INTEGER,
+      "id_author" INTEGER NOT NULL,
+      "title"	VARCHAR(50) NOT NULL,
+      PRIMARY KEY("id" AUTOINCREMENT)
+    )`;
+    db.exec(createBooksTable, function(err){
+      if(err){
+        throw err;
+      }
+      console.log('Books table ready');
+    })
+
+  }
+  
+  getIdEntity(entity_id, entity) {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT id FROM '${entity}' WHERE id = '${entity_id}'`;
+      this.db.get(query, function(err, row){
+        if(err) {
+          reject(err);
+        } else {
+          if (row === undefined){
+            resolve(row != undefined);
+          } else {
+            resolve(row.id);
+          } 
+        }
+      })
+    });
+  }
+
+  entityExists(entity_id, entity) {
+    return new Promise((resolve, reject) => {
+      const selectUser = `SELECT * FROM '${entity}' WHERE id = '${entity_id}'`;
+      this.db.get(selectUser, function(err, row){
+        if(err) {
+          reject(err);
+        } else {
+          resolve(row != undefined);  
+        }  
+      })
+    });
+  }
+
+  createAuthor(firstname, lastname, alias) {
+    return new Promise((resolve, reject) => {
+      let insertUser;
+      console.log(firstname, lastname, alias);
+      if (alias != undefined){
+        if (lastname != undefined){
+          console.log("alors", firstname, lastname, alias);
+          insertUser = `INSERT INTO authors (id, firstname, lastname, alias) VALUES (null, '${firstname}', '${lastname}', '${alias}')` ;
+        } else {
+          console.log("alors", alias);
+          insertUser = `INSERT INTO authors (id, firstname, lastname, alias) VALUES (null, null, null, '${alias}')` ;
+        }
+      } else {
+        console.log("alors", firstname, lastname);
+        insertUser = `INSERT INTO authors (id, firstname, lastname, alias) VALUES (null, '${firstname}', '${lastname}', null )` ;
+      }
+      this.db.exec(insertUser, function(err) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(true);
+        }
+      });
+    });
+  }
+
+  getIdAuthor(firstname, lastname, alias) {
+    return new Promise((resolve, reject) => {
+      const sql_id = `SELECT id FROM authors WHERE (firstname = '${firstname}' AND lastname = '${lastname}') OR alias = '${alias}'`;
+      this.db.get(sql_id, function(err, row){
+        if(err) {
+          reject(err);
+        } else {
+          if (row === undefined){
+            resolve(row != undefined);
+          } else {
+            resolve(row.id);
+          }
+        }  
+      })
+    });
+  }
+
+  createBook(id_author, title) {
+    return new Promise((resolve, reject) => {
+      const insertUser = `INSERT INTO books (id, id_author, title) VALUES (null, '${id_author}', '${title}')` ;
+      this.db.exec(insertUser, function(err) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(true);
+        }
+      });
+    });
+  }
+
+  getIdBook(id_author, title) {
+    return new Promise((resolve, reject) => {
+      const sql_id = `SELECT id FROM books WHERE id_author = '${id_author}' AND title = '${title}'`;
+      this.db.get(sql_id, function(err, row){
+        if(err) {
+          reject(err);
+        } else {
+          if (row === undefined){
+            resolve(row != undefined);
+          } else {
+            resolve(row.id);
+          }
+        }
+      })
+    });
+  }
+
+  getEntitiesList(entity) { 
+    return new Promise((resolve, reject) => {
+      const query = `SELECT * FROM '${entity}'`;
+      this.db.all(query, function(err, rows){
+        if(err) {
+          reject(err);
+        } else {
+          var tab = [];
+          if (rows != undefined){ 
+            rows.forEach((row) => {
+                tab.push(JSON.stringify(row));
+            })
+            resolve(tab);
+          }
+        }
+      });
+    });
+  }
+
+}
+
+exports.default = AuthorsBooks;
+
