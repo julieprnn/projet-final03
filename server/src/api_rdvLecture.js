@@ -32,6 +32,7 @@ function init(db) {
 
 
     router
+        // Création d'un nouveau rdvLecture
         .put("/", async (req, res) => {
             try{
                 const { userId, speaker, title, text, bookId, authorId, image, dateStart, dateStop, link} = req.body;
@@ -41,7 +42,20 @@ function init(db) {
                     handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId, speaker, title, bookId, authorId, dateStart, dateStop, link>");
                     return;
                 }
-                // Insertion de l'utilisateur dans la BD
+
+                // Erreur : l'auteur n'est pas présente dans la table authors
+                if (! await users.entityExists(entityId, "authors")) {
+                    handlingRes.default(res, 404, "Auteur non trouvé dans la base de données");
+                    return;
+                }
+
+                // Erreur : le livre n'est pas présente dans la table books
+                if (! await users.entityExists(entityId, "books")) {
+                    handlingRes.default(res, 404, "Livre non trouvé dans la base de données");
+                    return;
+                }
+
+                // Insertion du rdvLecture dans la table rdvlectures
                 if(!await rdvLecture.createRdvLecture(userId, speaker, title, text, bookId, authorId, image, dateStart, dateStop, link)) {
                     handlingRes.default(res, 409, "Problème lors de l'insertion du rdvLecture dans la base de données");
                     return;
@@ -49,16 +63,19 @@ function init(db) {
                     handlingRes.default(res, 200, "Insertion du rdvLecture dans la base de données rdvLecture réussie!");
                 }
 
+                // Envoi d'une notification à tous les lecteurs (user) intéressés par l'auteur mentionné
                 let tabIdFollowers = await users.getFollowersList(authorId, "authors");
                 if (tabIdFollowers.length != 0) {                    
                     tabIdFollowers.forEach((row) => {
-                        users.addNotification(row, "salut ca t interesse!");
+                        users.addNotification(row, "Nouveau rdvLecture conseillé de la part de " + speaker + "!");
                     });
                 }
+
+                // Envoi d'une notification à tous les lecteurs (user) intéressés par le livre mentionné
                 tabIdFollowers = await users.getFollowersList(bookId, "books");
                 if (tabIdFollowers.length != 0) {                    
                     tabIdFollowers.forEach((row) => {
-                        users.addNotification(row, "salut ca t interesse!");
+                        users.addNotification(row, "Nouveau rdvLecture conseillé de la part de " + speaker + "!");
                     });
                 }
             } 
@@ -69,7 +86,7 @@ function init(db) {
         });
 
     router
-        //modify
+        // Modification d'un rdvLecture
         .post("/:rdvLecture_id", async (req, res) => {
             try {
                 const rdvLectureId = req.params.rdvLecture_id;
@@ -81,22 +98,17 @@ function init(db) {
                     return;
                 }
 
+                // Vérification si ce lecteur (user) est l'auteur du rdv dans la table rdvlectures
                 if(!await rdvLecture.rdvIsMine(userId, rdvLectureId)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "rdv not mine non 6 autorizzato"
-                    });
+                    handlingRes.default(res, 406, "Modification du rdvLecture non authorisé");
                     return;
                 }
 
+                // Mise à jour du rdvLecture dans la table rdvlectures
                 if(! await rdvLecture.modifyRdvLecture(rdvLectureId, speaker, title, text, image, dateStart, dateStop, link)) {
                     handlingRes.default(res, 409, "Problème lors de la modification du rdvLecture dans la base de données");
                 } else {
-                    console.log('rdv modif');
-                    res.status(200).json({
-                        status: 200,
-                        message: "rdv modif"
-                    });
+                    handlingRes.default(res, 200, "Mise à jour du rdvLecture dans la base de données effectuée");
                 }
             }
             catch (e) {
@@ -106,6 +118,7 @@ function init(db) {
         });
 
     router
+        // Suppression d'un rdvLecture
         .delete("/:rdvLecture_id", async (req, res) => {
 
             try {
@@ -120,22 +133,17 @@ function init(db) {
                     return;
                 }
 
+                // Vérification si ce lecteur (user) est l'auteur du rdv dans la table rdvlectures
                 if(!await rdvLecture.rdvIsMine(userId, rdvLectureId)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: " not mine non 6 autorizzato"
-                    });
+                    handlingRes.default(res, 406, "Modification du rdvLecture non authorisé");
                     return;
                 }
 
+                // Suppression du rdvLecture de la table rdvlectures
                 if(! await rdvLecture.deleteRdvLecture(rdvLectureId)) {
                     handlingRes.default(res, 409, "Problème lors de la suppression du rdvLecture dans la base de données");
                 } else {
-                    console.log('rdv supprimee');
-                    res.status(200).json({
-                        status: 200,
-                        message: "rdv supprimee"
-                    });
+                    handlingRes.default(res, 200, "rdvLecture annulé avec succès!")
                 }
             }
             catch (e) {
@@ -144,13 +152,8 @@ function init(db) {
             }
         });
 
-
-    //-------------------------------------------------------------------------------------------------
-    // const followers = new Followers.default(dbSqLite);
-    //-------------------------------------------------------------------------------------------------
-
     router
-        //Follow rdv
+        // Ajout d'un rdv à la liste des favoris (follow)
         .put("/search/rdvLecture/:rdvLecture_id", async (req, res) => {
 
             try {
@@ -163,36 +166,23 @@ function init(db) {
                     return;
                 }
 
-                // Verification si l' existe
-                if(! await rdvLecture.existsRdvLecture(rdvLectureId)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "rdv inconnu"
-                    });
+                // Vérification si le rdvLecture existe dans la table rdvLecture
+                if (! await rdvLecture.existsRdvLecture(rdvLectureId)) {
+                    handlingRes.default(res, 404, "rdvLecture non trouvé dans la base de données");
                     return;
                 }
 
-                // Verification si l' existe
+                // Erreur : la préference est déjà présente dans la table followers
                 if(await followers.alreadyFollowed(userId, rdvLectureId, "rdvLecture")) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "dejà followed"
-                    });
+                    handlingRes.default(res, 409, "Préference déjà existante dans la base de données");
                     return;
                 }
 
+                // Insertion de la préference pour ce rdv dans la table followers (follow)
                 if(! await followers.follow(userId, rdvLectureId, "rdvLecture")) {
-                    res.status(400).json({
-                        status: 400,
-                        message: "Erreur pendant following"
-                    });
-
+                    handlingRes.default(res, 409, "Problème lors de l'insertion de la préférence dans la base de données (follow)");
                 } else{
-                    console.log('followed');
-                    res.status(200).json({
-                        status: 200,
-                        message: "followed"
-                    });
+                    handlingRes.default(res, 200, "rdvLecture ajoutée aux favorites (follow)");
                 }
             }
             catch (e) {
@@ -201,8 +191,8 @@ function init(db) {
             }
         });
 
-        //liste rdv que je suis
     router
+        // Affichage des rdvLecture favoris
         .get("/:user_id/rdvLectureList", async (req, res) => {
             try {
                 const userId = req.params.user_id;
@@ -213,22 +203,14 @@ function init(db) {
                     return;
                 }
 
-                // Verification si l'utilisateur existe
+                // Obtention de la liste de rdvLecture favoris du lecteur (user) dans la table followers
                 let tabRdvLecture = await followers.getFollowedList(userId, "rdvLecture");
-                
                 if (tabRdvLecture.length != 0) {                    
                     let tabRDV = tabRdvLecture.toString();
-                    res.status(200).json({
-                        status: 200,
-                        message: "liste rdv trouvée",
-                        listAuthors: tabRDV
-                    });
+                    handlingRes.default(res, 200, "Liste de rdvLecture trouvée dans la base de données", tabRDV);
                 }
                 else {
-                    res.status(401).json({
-                        status: 401,
-                        message: "liste rdv inexistant"
-                    });
+                    handlingRes.default(res, 404, "Liste de rdvLecture vide dans la base de données");
                 return;
                 }
             }
@@ -238,8 +220,8 @@ function init(db) {
             }
         });     
 
-        //unfollow
     router
+        // Suppression d'un rdvLecture de la liste des favoris (unfollow)
         .delete("/:user_id/rdvLectureList/:rdvLecture_id", async (req, res) => {
             try {
                 const userId = req.params.user_id;
@@ -251,36 +233,24 @@ function init(db) {
                     return;
                 }
 
-                // Verification si l' existe
-                if(! await rdvLecture.existsRdvLecture(rdvLectureId)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "rdv inconnu"
-                    });
+                // Vérification si le rdvLecture existe dans la table rdvLecture
+                if (! await rdvLecture.existsRdvLecture(rdvLectureId)) {
+                    handlingRes.default(res, 404, "rdvLecture non trouvé dans la base de données");
                     return;
                 }
 
-                // Verification si l' existe
-                if(!await followers.alreadyFollowed(userId, rdvLectureId, "rdvLecture")) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "tu ne le follow pas"
-                    });
+                // Vérification si la préférence existe dans la table followers
+                if(await followers.alreadyFollowed(userId, rdvLectureId, "rdvLecture")) {
+                    handlingRes.default(res, 404, "Préférence non trouvée dans la base de données");
                     return;
                 }
 
-                if(! await followers.unFollow(userId, rdvLectureId, "rdvLecture")) {
-                    res.status(400).json({
-                        status: 400,
-                        message: "Erreur pendant unfollowing"
-                    });
-
-                } else{
-                    console.log('unfollowed');
-                    res.status(200).json({
-                        status: 200,
-                        message: "unfollowed"
-                    });
+                // Suppression de la préference pour ce rdvLecture de la table followers (unfollow)
+                if (! await followers.unFollow(userId, rdvLectureId, "rdvLecture")) {
+                    handlingRes.default(res, 409, "Problème lors de la suppression de la préférence dans la base de données (unfollow)");
+                } 
+                else{
+                    handlingRes.default(res, 200, "rdvLecture retirée des favorites (unfollow)");
                 }
             }
             catch (e) {
@@ -290,10 +260,11 @@ function init(db) {
         });
 
     router
+        // Affichage de la liste des rdvLecture favoris
         .get("/:entity/:entity_id/rdvLectureList", async (req, res) => {
             try {
 
-                let { n } = req.body; //n = nombre de lignes à visualiser
+                let { n } = req.body; // n = nombre de lignes à visualiser
                 const entity = req.params.entity;
                 const entityId = req.params.entity_id;
                 
@@ -303,43 +274,31 @@ function init(db) {
                     return;
                 }
                 
-                // Erreur : paramètre manquant
+                // Erreur : entité non réconnue
                 if (entity != "books" && entity != "authors") {
-                    res.status(400).json({
-                        status: 400,
-                        "message": "Requête invalide : entity inconnue"
-                    });
+                    handlingRes.default(res, 406, "Entité non réconnue");
                     return;
                 }
 
+                // Vérification si l'entité (livre ou auteur) existe dans les tables books ou authors
                 if(! await users.entityExists(entityId, entity)) {
-                    res.status(401).json({
-                        status: 401,
-                        message: "non trouve"
-                    });
+                    handlingRes.default(res, 404, "Entité non trouvée dans la base de données");
                     return;
                 }
 
+                // Paramètre manquant : initialisation par défaut
                 if (!n) {
                     n = 10;
                 }
 
-                // Verification si l'utilisateur existe
-                let tabRdvLecture = await rdvLecture.getThisEntityRdvList(entityId, entity, n);
-                                
+                // Obtention de la liste de rdvLecture concernant cette entité (auteur ou livre)  
+                let tabRdvLecture = await rdvLecture.getThisEntityRdvList(entityId, entity, n);          
                 if (tabRdvLecture.length != 0) {                    
                     let tabRDV = tabRdvLecture.toString();
-                    res.status(200).json({
-                        status: 200,
-                        message: "liste rdv trouvée",
-                        listAuthors: tabRDV
-                    });
+                    handlingRes.default(res, 200, "Liste de rdvLecture trouvée dans la base de données", tabRDV);
                 }
                 else {
-                    res.status(401).json({
-                        status: 401,
-                        message: "liste rdv inexistant"
-                    });
+                    handlingRes.default(res, 404, "Liste de rdvLecture vide dans la base de données");
                 return;
                 }
             }

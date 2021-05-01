@@ -595,7 +595,7 @@ function init(db) {
 
 
     router
-        // Ajout d'un livre ou d'un auteur à la liste des favoris
+        // Ajout d'un livre ou d'un auteur à la liste des favoris (follow)
         .put(":entity/:entity_id", async (req, res) => {
 
             try {
@@ -654,7 +654,7 @@ function init(db) {
         });
 
     router
-        // Suppression d'un livre ou d'un auteur de la liste des favoris
+        // Suppression d'un livre ou d'un auteur de la liste des favoris (unfollow)
         .delete(":entity/:entity_id", async (req, res) => {
 
             try {

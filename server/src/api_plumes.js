@@ -350,7 +350,7 @@ function init(db) {
                 if(! await plumes.deletePlume(plumeId)) {
                     handlingRes.default(res, 409, "Problème lors de la suppression de la plume dans la base de données");
                 } else {
-                    handlingRes.default(res, 200, "Plume supprimée avec succès !", tabN);;
+                    handlingRes.default(res, 200, "Plume supprimée avec succès !");;
                 }
             }
             catch (e) {
