@@ -211,7 +211,7 @@ function init(db) {
         });
 
     router
-        // Affichage de la liste des plumes : plumes d'amis, plumes des favoris, NO SPOILER
+        // Obtention de la liste des plumes : plumes d'amis, plumes des favoris, NO SPOILER
         .get("/", async (req, res) => {
 
             try {
@@ -245,7 +245,7 @@ function init(db) {
         });
 
     router
-        // Affichage de la liste des plumes personnelle : plumes écrites par ce lecteur (user)
+        // Obtention de la liste des plumes personnelle : plumes écrites par ce lecteur (user)
         .get("/:user_id", async (req, res) => {
 
             try {
@@ -281,7 +281,7 @@ function init(db) {
         });
 
     router
-        // Affichage de la liste des plumes écrites sur un livre ou un auteur
+        // Obtention de la liste des plumes écrites sur un livre ou un auteur
         .get("/:entity/:entity_id", async (req, res) => {    
 
             try {

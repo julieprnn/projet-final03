@@ -375,7 +375,7 @@ function init(db) {
         });
 
     router
-        // Affichage de la liste des notifications les plus récentes
+        // Obtention de la liste des notifications les plus récentes
         .get("/:user_login/notifications", async (req, res) => {
 
             try {
@@ -513,7 +513,7 @@ function init(db) {
         });
 
     router
-        // Affichage de la liste des amis du lecteur (user)
+        // Obtention de la liste des amis du lecteur (user)
         .get("/:user_login/friendsList", async (req, res) => {
 
             try {
@@ -713,7 +713,7 @@ function init(db) {
         });
 
     router
-        // Affichage de la liste des livres favoris
+        // Obtention de la liste des livres favoris
         .get("/:user_login/booksList", async (req, res) => {
             try {
                 const login = req.params.user_login;
@@ -745,7 +745,7 @@ function init(db) {
         });
 
     router
-        // Affichage de la liste d'auteurs favoris
+        // Obtention de la liste d'auteurs favoris
         .get("/:user_login/authorsList", async (req, res) => {
 
             try {

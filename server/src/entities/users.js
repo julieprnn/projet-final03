@@ -1,7 +1,5 @@
 class Users {
 
-  // Constructeur de la classe Users (instanciation): creation d'une table 'users'
-  // constituée des champs id (autoincremental), login, password, lastname (nom), firstname (prenom)
   constructor(db) {
     this.db = db
 
@@ -19,7 +17,7 @@ class Users {
       }
       console.log('User table ready');
     })
-
+  
     const createAuthorsTable = `CREATE TABLE IF NOT EXISTS "authors" (
       "id"	INTEGER,
       "lastname"	VARCHAR(50),
@@ -33,7 +31,7 @@ class Users {
       }
       console.log('Authors table ready');
     })
-
+    
     const createBooksTable = `CREATE TABLE IF NOT EXISTS "books" (
       "id"	INTEGER,
       "id_author" INTEGER NOT NULL,
@@ -46,7 +44,7 @@ class Users {
       }
       console.log('Books table ready');
     })
-
+  
     const createNotificationsTable = `CREATE TABLE IF NOT EXISTS "notifications" (
       "id"	INTEGER,
       "userId" INTEGER NOT NULL,
@@ -61,7 +59,7 @@ class Users {
       console.log('Notifications table ready');
     })
   }
-
+  
   create(login, password, lastname, firstname) {
     return new Promise((resolve, reject) => {
       const insertUser = `INSERT INTO users (id, login, password, lastname, firstname) VALUES (null, '${login}', '${password}', '${lastname}', '${firstname}')` ;

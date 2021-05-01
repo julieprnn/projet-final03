@@ -192,7 +192,7 @@ function init(db) {
         });
 
     router
-        // Affichage des rdvLecture favoris
+        // Obtention des rdvLecture favoris
         .get("/:user_id/rdvLectureList", async (req, res) => {
             try {
                 const userId = req.params.user_id;
@@ -260,7 +260,7 @@ function init(db) {
         });
 
     router
-        // Affichage de la liste des rdvLecture favoris
+        // Obtention de la liste des rdvLecture favoris
         .get("/:entity/:entity_id/rdvLectureList", async (req, res) => {
             try {
 

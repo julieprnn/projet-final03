@@ -1,7 +1,5 @@
 class Friends {
 
-  // Constructeur de la classe Friends (instanciation): creation d'une table 'friends'
-  // constituée des champs id (autoincremental), login, password, lastname (nom), firstname (prenom) A MODIFIER!!!!!!!!!
   constructor(db) {
     this.db = db
 
