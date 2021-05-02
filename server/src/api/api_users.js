@@ -114,7 +114,7 @@ function init(db) {
 
     router
         .route("/:user_login")
-        // Obtention de la page profil du lecteur (user)
+        // Obtention des informations du lecteur (user)
         .get(async (req, res, next) => {
             try {
                 const login = req.params.user_login;
@@ -123,8 +123,13 @@ function init(db) {
                     return;
                 }
                 else {
-                    res.send("____Page profil de l'utilisateur____");
-                    next();
+                    // Obtention des informations
+                    if (! await users.getUser(login)) {
+                        handlingRes.default(res, 409, "Problème lors de l'obtention du profil lecteur");
+                    }
+                    else {
+                        handlingRes.default(res, 200, "Obtention profil lecteur réussi");
+                    }
                 }
             }
             catch (e) {

@@ -38,12 +38,11 @@ function init(db) {
         // Création d'un nouveau livre
         .put("/insertNewBook", async (req, res) => {
             try {
-                const login = req.params.user_login;
-                const { firstnameAuthor, lastnameAuthor, aliasAuthor, title } = req.body;
+                const { firstnameAuthor, lastnameAuthor, aliasAuthor, title, image } = req.body;
 
                 // Erreur : paramètre manquant
-                if (!login || !title || !(aliasAuthor || (firstnameAuthor && lastnameAuthor))) {
-                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <login, title, aliasAuthor ou (firstnameAuthor and lastnameAuthor)>");
+                if (!title || !(aliasAuthor || (firstnameAuthor && lastnameAuthor))) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <title, aliasAuthor ou (firstnameAuthor and lastnameAuthor)>");
                     return;
                 }
                 
@@ -55,7 +54,7 @@ function init(db) {
                     const idB = await authorsBooks.getIdBook(idA, title);
                     if (!idB){
                         // Insertion du livre dans la table books
-                        if (! await authorsBooks.createBook(idA, title)){
+                        if (! await authorsBooks.createBook(idA, title, image)){
                             handlingRes.default(res, 409, "Problème lors de l'insertion du livre dans la base de données");
                             return;
                         } 
@@ -92,12 +91,11 @@ function init(db) {
         // Création d'un nouvel auteur
         .put("/insertNewAuthor", async (req, res) => {
             try{
-                const login = req.params.user_login;
-                const { firstnameAuthor, lastnameAuthor, aliasAuthor} = req.body;
+                const { firstnameAuthor, lastnameAuthor, aliasAuthor, biography, image} = req.body;
 
                 // Erreur : paramètre manquant
-                if (!login || !(aliasAuthor || (firstnameAuthor && lastnameAuthor))) {
-                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <login, aliasAuthor ou (firstnameAuthor and lastnameAuthor)>");
+                if (!(aliasAuthor || (firstnameAuthor && lastnameAuthor))) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <aliasAuthor ou (firstnameAuthor and lastnameAuthor)>");
                     return;
                 }
                 // Obtention de l'identifiant de l'auteur dans la table authors
@@ -105,7 +103,7 @@ function init(db) {
 
                 if (!idA){
                     // Insertion de l'auteur dans la table authors
-                    if (! await authorsBooks.createAuthor(firstnameAuthor, lastnameAuthor, aliasAuthor)){
+                    if (! await authorsBooks.createAuthor(firstnameAuthor, lastnameAuthor, aliasAuthor, biography, image)){
                         handlingRes.default(res, 409, "Problème lors de l'insertion de l'auteur dans la base de données");
                         return;
                     } 
@@ -334,7 +332,7 @@ function init(db) {
                     return;
                 }
 
-                // Obtention de la liste des entités preferées (livre ou auteurs) du lecteur (user) dans la table followers
+                // Obtention de la liste des entités (livre ou auteurs) dans la table authors ou books
                 let tabE = await authorsBooks.getEntitiesList(entity);               
                 if (tabE.length != 0) {                    
                     handlingRes.default(res, 200, "Liste " + entity + " trouvée dans la base de données", tabE);

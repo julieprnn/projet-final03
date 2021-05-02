@@ -63,6 +63,23 @@ class Users {
     });
   }
 
+  getUser(login) {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT * FROM users WHERE login = '${login}'`;
+      this.db.get(query, function(err, row){
+        if(err) {
+          reject(err);
+        } else {
+          if (row === undefined){
+            resolve(row != undefined);
+          } else {
+            resolve(row);
+          } 
+        }
+      })
+    });
+  }
+
   exists(login) {
     return new Promise((resolve, reject) => {
       const selectUser = `SELECT login FROM users WHERE login = '${login}'`;

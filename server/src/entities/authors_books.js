@@ -35,17 +35,17 @@ class AuthorsBooks {
   
   }
 
-  createAuthor(firstname, lastname, alias) {
+  createAuthor(firstname, lastname, alias, biography, image) {
     return new Promise((resolve, reject) => {
       let query;
       if (alias != undefined){
         if (lastname != undefined){
-          query = `INSERT INTO authors (id, firstname, lastname, alias) VALUES (null, '${firstname}', '${lastname}', '${alias}')` ;
+          query = `INSERT INTO authors (id, firstname, lastname, alias, biography, image) VALUES (null, '${firstname}', '${lastname}', '${alias}', '${biography}', '${image}')` ;
         } else {
-          query = `INSERT INTO authors (id, firstname, lastname, alias) VALUES (null, null, null, '${alias}')` ;
+          query = `INSERT INTO authors (id, firstname, lastname, alias, biography, image) VALUES (null, null, null, '${alias}', '${biography}', '${image}')` ;
         }
       } else {
-        query = `INSERT INTO authors (id, firstname, lastname, alias) VALUES (null, '${firstname}', '${lastname}', null )` ;
+        query = `INSERT INTO authors (id, firstname, lastname, alias, biography, image) VALUES (null, '${firstname}', '${lastname}', null, '${biography}', '${image}' )` ;
       }
       this.db.exec(query, function(err) {
         if (err) {
@@ -57,9 +57,9 @@ class AuthorsBooks {
     });
   }
 
-  createBook(id_author, title) {
+  createBook(id_author, title, image) {
     return new Promise((resolve, reject) => {
-      const query = `INSERT INTO books (id, id_author, title) VALUES (null, '${id_author}', '${title}')` ;
+      const query = `INSERT INTO books (id, id_author, title, image) VALUES (null, '${id_author}', '${title}', '${image}')` ;
       this.db.exec(query, function(err) {
         if (err) {
           reject(err);
