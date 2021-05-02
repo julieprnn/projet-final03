@@ -1,8 +1,8 @@
 const express = require('express');
-const RdvLecture = require("./entities/RdvLecture");
-const followers = require("./entities/followers");
-const users = require("./entities/users");
-const handlingRes = require("./entities/handlingRes");
+const RdvLecture = require("../entities/RdvLecture");
+const users = require("../entities/users");
+const followers = require("../entities/followers");
+const handlingRes = require("../handlingRes");
 
 const router = express.Router();
 

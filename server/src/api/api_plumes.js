@@ -1,6 +1,6 @@
 const express = require('express');
-const Plumes = require("./entities/plumes");
-const handlingRes = require("./entities/handlingRes");
+const Plumes = require("../entities/plumes");
+const handlingRes = require("../handlingRes");
 
 const router = express.Router();
 
