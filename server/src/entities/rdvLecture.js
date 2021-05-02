@@ -62,7 +62,6 @@ class RdvLecture {
   rdvIsMine(userId, rdvLectureId){
     return new Promise((resolve, reject) => {
       const query = { $and: [{ _id : rdvLectureId }, { createdBy : userId } ] };
-      console.log(query);
       this.rdvLecture.findOne( query, function(err, row){
         if (err) {
           reject(err);
@@ -100,7 +99,6 @@ class RdvLecture {
     });
   }
 
-  // affiche les premiers n results
   getThisEntityRdvList(entityId, entity, n) {
     return new Promise((resolve, reject) => {
       let query;
@@ -115,7 +113,7 @@ class RdvLecture {
         } else {
           resolve(tab);
         }
-      }).sort({date: -1}).limit(n);
+      }).sort({date: -1}).limit(n); // affiche les premiers n results
     });
   }
 

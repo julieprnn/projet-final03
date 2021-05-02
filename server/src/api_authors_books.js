@@ -1,7 +1,6 @@
 const express = require('express');
-const Users = require("./entities/users");
+const users = require("./entities/users");
 const AuthorsBooks = require("./entities/authors_books");
-const Friends = require("./entities/friends");
 const Followers = require("./entities/followers");
 const handlingRes = require("./entities/handlingRes");
 
@@ -88,7 +87,7 @@ function init(db) {
 
     router
         // Création d'un nouvel auteur
-        .put("/:user_login/insertNewAuthor", async (req, res) => {
+        .put("/insertNewAuthor", async (req, res) => {
             try{
                 const login = req.params.user_login;
                 const { firstnameAuthor, lastnameAuthor, aliasAuthor} = req.body;

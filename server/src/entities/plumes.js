@@ -1,7 +1,5 @@
 class Plumes {
   
-  // Constructeur de la classe Friends (instanciation): creation d'une table 'friends'
-  // constituée des champs id (autoincremental), login, password, lastname (nom), firstname (prenom) A MODIFIER!!!!!!!!!
   constructor(db) {
     this.db = db
 
@@ -83,8 +81,20 @@ class Plumes {
         update = { _id : plumeId, text : newText, image : newImage};
       }
       
-      console.log("query:",query, "update:", update);
       this.Plume.updateOne( query, update, function(err){
+        if (err) {
+          reject(err);
+        } else {
+          resolve(plumeId);  
+        }  
+      })
+    });
+  }
+
+  deletePlume(plumeId){
+    return new Promise((resolve, reject) => {
+      const query = { _id : plumeId };
+      this.Plume.deleteOne( query, function(err){
         if (err) {
           reject(err);
         } else {
@@ -117,9 +127,6 @@ class Plumes {
     return new Promise((resolve, reject) => {
       const query = { _id : plumeId , comments : { userId : userId, text : text, spoiler : spoiler } };
       const update = { $set: { "comments.$" : { userId : userId, text : newText, spoiler : newSpoiler } } };
-
-      console.log("query=",query);
-      console.log("update=",update);
       this.Plume.updateOne( query,  update, function(err){
         if (err) {
           reject(err);
@@ -130,33 +137,15 @@ class Plumes {
     });
   }
 
-  // ca ne marche pas : il fonctionn parfois avec userId, il faudrait verifier aussi le commentaireId
   deleteCommentPlume(plumeId, userId, text){
     return new Promise((resolve, reject) => {
       const query = { _id : plumeId };
       const update = { $pull: { comments : { userId : userId, text : text } } };
-      console.log("query=",query);
-      console.log("update=",update);
       this.Plume.updateOne( query,  update, function(err){
         if (err) {
           reject(err);
         } else {
           resolve(plumeId);
-        }  
-      })
-    });
-  }
-
-  //remove is deprecated. Use deleteOne, deleteMany, or bulkWrite instead
-  deletePlume(plumeId){
-    return new Promise((resolve, reject) => {
-      const query = { _id : plumeId };
-      console.log("query",query);
-      this.Plume.deleteOne( query, function(err){
-        if (err) {
-          reject(err);
-        } else {
-          resolve(plumeId);  
         }  
       })
     });
@@ -175,21 +164,20 @@ class Plumes {
         } else {
           resolve(tab);
         }
-      }).sort({date: -1}).limit(n); // affiche les premiers n results ordre decriss de date (plus recents)
+      }).sort({date: -1}).limit(n); // affiche les n resultats les plus recents
     });
   }
   
   getAllPlumesList(entity_id, typeEntity, spoiler, n) {
     return new Promise((resolve, reject) => {
       const query = { $and: [ {entity_id : entity_id}, {typeEntity : typeEntity}, {spoiler : spoiler} ] };
-      console.log(query);
       this.Plume.find(query, function(err, tab){
         if(err) {
           reject(err);
         } else {
           resolve(tab);
         }
-      }).sort({date: -1}).limit(n); // affiche les premiers n results
+      }).sort({date: -1}).limit(n); // affiche les n resultats les plus recents
     });
   }
 
@@ -202,20 +190,7 @@ class Plumes {
         } else {
           resolve(tab);
         }
-      }).sort({date: -1}).limit(n); // affiche les premiers n results
-    });
-  }
-
-  plumeIsMine(user_id, plumeId){
-    return new Promise((resolve, reject) => {
-      const query = { _id : plumeId, userId : user_id};
-      this.Plume.findOne(query, function(err, row){
-        if (err) {
-          reject(err);
-        } else {
-          resolve(row != undefined); 
-        }  
-      })
+      }).sort({date: -1}).limit(n); // affiche les n resultats les plus recents
     });
   }
 

@@ -21,8 +21,8 @@ class Followers {
 
   alreadyFollowed(id1,id2, entity) {
     return new Promise((resolve, reject) => {
-      const selectFriends = `SELECT id1 FROM followers WHERE id1 = '${id1}' AND id2 = '${id2}' AND entity = '${entity}'`;
-      this.db.get(selectFriends, function(err, row){
+      const query = `SELECT id1 FROM followers WHERE id1 = '${id1}' AND id2 = '${id2}' AND entity = '${entity}'`;
+      this.db.get(query, function(err, row){
         if(err) {
           reject(err);
         } else {
@@ -34,8 +34,8 @@ class Followers {
 
   follow(id1, id2, entity) {
     return new Promise((resolve, reject) => {
-      const sql_addF = `INSERT INTO followers (id1, id2, entity) VALUES ('${id1}', '${id2}', '${entity}')` ;
-      this.db.exec(sql_addF, function(err, row){
+      const query = `INSERT INTO followers (id1, id2, entity) VALUES ('${id1}', '${id2}', '${entity}')` ;
+      this.db.exec(query, function(err, row){
         if(err) {
           reject(err);
         } else {
@@ -47,8 +47,8 @@ class Followers {
 
   unFollow(id1, id2, entity) {
     return new Promise((resolve, reject) => {
-      const sql_rejF = `DELETE FROM followers WHERE id1 = '${id1}' AND id2 = '${id2}' AND entity = '${entity}'` ;
-      this.db.exec(sql_rejF, function(err, row){
+      const query = `DELETE FROM followers WHERE id1 = '${id1}' AND id2 = '${id2}' AND entity = '${entity}'` ;
+      this.db.exec(query, function(err, row){
         if(err) {
           reject(err);
         } else {
@@ -60,8 +60,8 @@ class Followers {
 
   getFollowedList(id, entity) { 
     return new Promise((resolve, reject) => {
-      const sql_FrList = `SELECT id1 FROM followers WHERE id2 = '${id}' AND entity = '${entity}'`;
-      this.db.all(sql_FrList, function(err, rows){
+      const query = `SELECT id1 FROM followers WHERE id2 = '${id}' AND entity = '${entity}'`;
+      this.db.all(query, function(err, rows){
         if(err) {
           reject(err);
         } else {
