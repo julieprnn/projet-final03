@@ -104,6 +104,23 @@ class AuthorsBooks {
     });
   }
 
+  getIdEntity(entityId, entity) {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT id FROM '${entity}' WHERE id = '${entityId}'`;
+      this.db.get(query, function(err, row){
+        if(err) {
+          reject(err);
+        } else {
+          if (row === undefined){
+            resolve(row != undefined);
+          } else {
+            resolve(row.id);
+          }
+        }
+      })
+    });
+  }
+
   entityExists(entity_id, entity) {
     return new Promise((resolve, reject) => {
       const query = `SELECT * FROM '${entity}' WHERE id = '${entity_id}'`;

@@ -1,12 +1,13 @@
 const express = require('express');
 const Plumes = require("../entities/plumes");
+const Followers = require("../entities/followers");
 const handlingRes = require("../handlingRes");
 
 const router = express.Router();
 
 
 
-function init(db) {
+function init(db, dbSQL) {
 
     // On utilise JSON
     router.use(express.json());
@@ -27,7 +28,8 @@ function init(db) {
     // Instanciation de la classe Plumes en passant en paramètre le database mongoDB
     const plumes = new Plumes.default(db);
 
-
+    // Instanciation de la classe Followers en passant en paramètre le database SQLite
+    const followers = new Followers.default(dbSQL);
 
     router
         // Création d'une nouvelle plume (tweet)
@@ -51,7 +53,7 @@ function init(db) {
                 }
 
                 // Envoi d'une notification à tous les lecteurs (user) intéressés par l'auteur ou le livre mentionné
-                let tabIdFollowers = await users.getFollowersList(entityId, typeEntity);
+                let tabIdFollowers = await followers.getFollowersList(entityId, typeEntity);
                 if (tabIdFollowers.length != 0) {                    
                     tabIdFollowers.forEach((row) => {
                         users.addNotification(row, "Lecture conseillée : '" + title + "'");
@@ -113,7 +115,7 @@ function init(db) {
 
                 // Erreur : paramètre manquant
                 if (!plumeId || !userId || !text || !newText || !spoiler) {
-                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <plumeId, userId, text, newText, spoiler>");
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId, text, newText, spoiler>");
                     return;
                 } 
 
@@ -197,11 +199,7 @@ function init(db) {
                 if(! await plumes.modifyPlume(plumeId, text, image)) {
                     handlingRes.default(res, 409, "Problème lors de la modification de la plume dans la base de données");
                 } else {
-                    console.log('plume modif');
-                    res.status(200).json({
-                        status: 200,
-                        message: "plume modif"
-                    });
+                    handlingRes.default(res, 200, "Plume modifiée avec succès dans la base de données");
                 }
             }
             catch (e) {
@@ -249,13 +247,12 @@ function init(db) {
         .get("/:user_id", async (req, res) => {
 
             try {
-                const login = req.params.user_id;
-                const { userId } = req.body;
+                const userId = req.params.user_id;
                 let { n } = req.body;   // n = nombre de lignes à visualiser
                 
                 // Erreur : paramètre manquant
-                if (! login || !userId) {
-                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <login, userId>");
+                if (!userId) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId>");
                     return;
                 }
 

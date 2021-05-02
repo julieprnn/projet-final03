@@ -60,7 +60,7 @@ class Followers {
 
   getFollowedList(id, entity) { 
     return new Promise((resolve, reject) => {
-      const query = `SELECT id1 FROM followers WHERE id2 = '${id}' AND entity = '${entity}'`;
+      const query = `SELECT id2 FROM followers WHERE id1 = '${id}' AND entity = '${entity}'`;
       this.db.all(query, function(err, rows){
         if(err) {
           reject(err);
@@ -68,7 +68,7 @@ class Followers {
           var tab = [];
           if (rows != undefined){ 
             rows.forEach((row) => {
-                tab.push(row.id1);
+                tab.push(row.id2);
             })
             resolve(tab);
           }

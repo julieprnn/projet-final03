@@ -1,7 +1,7 @@
 const express = require('express');
-const users = require("../entities/users");
+const Users = require("../entities/users");
 const AuthorsBooks = require("../entities/authors_books");
-const followers = require("../entities/followers");
+const Followers = require("../entities/followers");
 const handlingRes = require("../handlingRes");
 
 
@@ -32,7 +32,47 @@ function init(db) {
     // Instanciation de la classe AuthorsBooks en passant en paramètre le database sqlite
     const authorsBooks = new AuthorsBooks.default(db);
 
+    // Instanciation de la classe Users en passant en paramètre le database sqlite
+    const users = new Users.default(db);
 
+    // Instanciation de la classe Followers en passant en paramètre le database sqlite
+    const followers = new Followers.default(db);
+
+
+    router
+        // Création d'un nouvel auteur
+        .put("/insertNewAuthor", async (req, res) => {
+            try{
+                const { firstnameAuthor, lastnameAuthor, aliasAuthor, biography, image} = req.body;
+
+                // Erreur : paramètre manquant
+                if (!(aliasAuthor || (firstnameAuthor && lastnameAuthor))) {
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <aliasAuthor ou (firstnameAuthor and lastnameAuthor)>");
+                    return;
+                }
+                // Obtention de l'identifiant de l'auteur dans la table authors
+                const idA = await authorsBooks.getIdAuthor(firstnameAuthor, lastnameAuthor, aliasAuthor);
+
+                if (!idA){
+                    // Insertion de l'auteur dans la table authors
+                    if (! await authorsBooks.createAuthor(firstnameAuthor, lastnameAuthor, aliasAuthor, biography, image)){
+                        handlingRes.default(res, 409, "Problème lors de l'insertion de l'auteur dans la base de données");
+                        return;
+                    } 
+                    else {
+                        handlingRes.default(res, 200, "Insertion de l'auteur dans la base de données authors réussie!");
+                    }
+                } 
+                else {
+                    // Erreur : l'auteur est déjà présent dans la table authors 
+                    handlingRes.default(res, 409, "Auteur déjà existant dans la base de données");
+                }
+            }
+            catch (e) {
+                // Erreur : erreur du server
+                handlingRes.default(res, 500, e.toString());
+            }
+        });
 
     router
         // Création d'un nouveau livre
@@ -87,42 +127,6 @@ function init(db) {
             }
         });
 
-    router
-        // Création d'un nouvel auteur
-        .put("/insertNewAuthor", async (req, res) => {
-            try{
-                const { firstnameAuthor, lastnameAuthor, aliasAuthor, biography, image} = req.body;
-
-                // Erreur : paramètre manquant
-                if (!(aliasAuthor || (firstnameAuthor && lastnameAuthor))) {
-                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <aliasAuthor ou (firstnameAuthor and lastnameAuthor)>");
-                    return;
-                }
-                // Obtention de l'identifiant de l'auteur dans la table authors
-                const idA = await authorsBooks.getIdAuthor(firstnameAuthor, lastnameAuthor, aliasAuthor);
-
-                if (!idA){
-                    // Insertion de l'auteur dans la table authors
-                    if (! await authorsBooks.createAuthor(firstnameAuthor, lastnameAuthor, aliasAuthor, biography, image)){
-                        handlingRes.default(res, 409, "Problème lors de l'insertion de l'auteur dans la base de données");
-                        return;
-                    } 
-                    else {
-                        handlingRes.default(res, 200, "Insertion de l'auteur dans la base de données authors réussie!");
-                    }
-                } 
-                else {
-                    // Erreur : l'auteur est déjà présent dans la table authors 
-                    handlingRes.default(res, 409, "Auteur déjà existant dans la base de données");
-                }
-            }
-            catch (e) {
-                // Erreur : erreur du server
-                handlingRes.default(res, 500, e.toString());
-            }
-        });
-
-
 
     //-------------------------------------------------------------------------------------------------
     //                                        Followers management
@@ -132,7 +136,7 @@ function init(db) {
 
     router
         // Ajout d'un livre ou d'un auteur à la liste des favoris (follow)
-        .put(":entity/:entity_id", async (req, res) => {
+        .put("/search/:entity/:entity_id", async (req, res) => {
 
             try {
                 const { login } = req.body;
@@ -141,7 +145,7 @@ function init(db) {
                 
                 // Erreur : paramètre manquant
                 if (!login || !entity || !entityId) {
-                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <login, entity, entityId>");
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <login>");
                     return;
                 }
                 
@@ -166,8 +170,8 @@ function init(db) {
                 // Obtention de l'identifiant du lecteur (user) dans la table users
                 let idU = await users.getIdUser(login);
 
-                // Obtention de l'identifiant de l'entité dans la table followers
-                let idE = await authorsBooks.getIdBook(entityId);
+                // Obtention de l'identifiant de l'entité dans la table authors ou books
+                let idE = await authorsBooks.getIdEntity(entityId, entity);
 
                 // Erreur : la préference est déjà présente dans la table followers
                 if (await followers.alreadyFollowed(idU,idE, entity)) {
@@ -261,10 +265,10 @@ function init(db) {
                 }
 
                 // Obtention de l'identifiant du lecteur (user) dans la table users
-                let idU= await users.getIdUser(login);
+                let idU = await users.getIdUser(login);
 
                 // Obtention de la liste de livres favoris du lecteur (user) dans la table followers
-                let tabBooks = await followers.getFollowedList(idU, "books"); 
+                let tabBooks = await followers.getFollowedList(idU, "books");
                 if (tabBooks.length != 0) {                    
                     let tabB = tabBooks.toString();
                     handlingRes.default(res, 200, "Liste de livres trouvée dans la base de données", tabB);

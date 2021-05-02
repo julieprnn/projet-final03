@@ -73,7 +73,7 @@ class Users {
           if (row === undefined){
             resolve(row != undefined);
           } else {
-            resolve(row);
+            resolve(JSON.stringify(row));
           } 
         }
       })
@@ -95,8 +95,8 @@ class Users {
   
   checkpassword(login, password) {
     return new Promise((resolve, reject) => {
-      const checkLoginPwd = `SELECT id FROM users WHERE login = '${login}' AND password = '${password}'` ; 
-      this.db.get(checkLoginPwd, function(err, row){
+      const query = `SELECT id FROM users WHERE login = '${login}' AND password = '${password}'` ; 
+      this.db.get(query, function(err, row){
         if(err) {
           reject(err);
         } else {
@@ -108,8 +108,8 @@ class Users {
 
   modifyUser(login, password, new_password) {
     return new Promise((resolve, reject) => {
-      const mod = `UPDATE users SET password = '${new_password}' WHERE login = '${login}' AND password = '${password}'` ;
-      this.db.exec(mod, function(err, row){
+      const query = `UPDATE users SET password = '${new_password}' WHERE login = '${login}' AND password = '${password}'` ;
+      this.db.exec(query, function(err, row){
         if(err) {
           reject(err);
         } else {

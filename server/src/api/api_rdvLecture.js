@@ -1,14 +1,15 @@
 const express = require('express');
 const RdvLecture = require("../entities/RdvLecture");
 const users = require("../entities/users");
-const followers = require("../entities/followers");
+const Followers = require("../entities/followers");
+const AuthorsBooks = require("../entities/authors_books");
 const handlingRes = require("../handlingRes");
 
 const router = express.Router();
 
 
 
-function init(db) {
+function init(db, dbSQL) {
 
     // On utilise JSON
     router.use(express.json());
@@ -29,7 +30,11 @@ function init(db) {
     // Instanciation de la classe RdvLecture en passant en paramètre le database mongoDB
     const rdvLecture = new RdvLecture.default(db);
 
+    // Instanciation de la classe Followers en passant en paramètre le database SQLite
+    const followers = new Followers.default(dbSQL);
 
+    // Instanciation de la classe AuthorsBooks en passant en paramètre le database sqlite
+    const authorsBooks = new AuthorsBooks.default(dbSQL);
 
     router
         // Création d'un nouveau rdvLecture
@@ -44,13 +49,13 @@ function init(db) {
                 }
 
                 // Erreur : l'auteur n'est pas présente dans la table authors
-                if (! await users.entityExists(entityId, "authors")) {
+                if (! await authorsBooks.entityExists(authorId, "authors")) {
                     handlingRes.default(res, 404, "Auteur non trouvé dans la base de données");
                     return;
                 }
 
                 // Erreur : le livre n'est pas présente dans la table books
-                if (! await users.entityExists(entityId, "books")) {
+                if (! await authorsBooks.entityExists(bookId, "books")) {
                     handlingRes.default(res, 404, "Livre non trouvé dans la base de données");
                     return;
                 }
@@ -124,8 +129,6 @@ function init(db) {
             try {
                 const rdvLectureId = req.params.rdvLecture_id;
                 const { userId } = req.body;
-                
-                console.log(rdvLectureId, user_id);
 
                 // Erreur : paramètre manquant
                 if (!userId) {
@@ -135,7 +138,7 @@ function init(db) {
 
                 // Vérification si ce lecteur (user) est l'auteur du rdv dans la table rdvlectures
                 if(!await rdvLecture.rdvIsMine(userId, rdvLectureId)) {
-                    handlingRes.default(res, 406, "Modification du rdvLecture non authorisé");
+                    handlingRes.default(res, 406, "Modification du rdvLecture non authorisée");
                     return;
                 }
 

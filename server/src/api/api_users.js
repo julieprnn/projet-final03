@@ -115,20 +115,22 @@ function init(db) {
     router
         .route("/:user_login")
         // Obtention des informations du lecteur (user)
-        .get(async (req, res, next) => {
+        .get(async (req, res) => {
             try {
                 const login = req.params.user_login;
+
                 if (!login){
                     handlingRes.default(res, 412, "Paramètre manquant. Usage : <login>");
                     return;
                 }
                 else {
                     // Obtention des informations
-                    if (! await users.getUser(login)) {
+                    let profil = await users.getUser(login);
+                    if (! profil) {
                         handlingRes.default(res, 409, "Problème lors de l'obtention du profil lecteur");
                     }
                     else {
-                        handlingRes.default(res, 200, "Obtention profil lecteur réussi");
+                        handlingRes.default(res, 200, "Obtention profil lecteur réussi", profil);
                     }
                 }
             }
@@ -147,7 +149,7 @@ function init(db) {
                 
                 // Erreur : paramètre manquant
                 if (!login || !password || !newPassword ) {
-                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <login, password, newPassword>");
+                    handlingRes.default(res, 412, "Paramètre manquant. Usage : <password, newPassword>");
                     return;
                 }
     
@@ -168,6 +170,9 @@ function init(db) {
                     else {
                         handlingRes.default(res, 200, "Mot de passe modifié avec succès!");
                     }
+                } 
+                else {
+                    handlingRes.default(res, 406, "Password incorrecte");
                 }
             }
             catch (e) {

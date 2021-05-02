@@ -40,14 +40,14 @@ useUnifiedTopology: true })
 //--------------------------DEFINITION ROUTES BIRDY--------------------------
 
 app.get('/', (req,res,next) => {
-    res.send('Ceci est la home de Birdy');
+    res.send('Ceci est la home de Birdy (test)');
     next();
 });
 
 app.use('/users', api_users.default(db)); // gestion des users, friends, followers avec sqlite3
 app.use('/birdy', api_authors_books.default(db)); // gestion des authors et des livres avec sqlite3
-app.use('/plumes', api_plumes.default(db2)); // gestion des plumes avec mongoDB
-app.use('/rdv', api_rdvLecture.default(db2)); // gestion des rdvLecture avec mongoDB
+app.use('/plumes', api_plumes.default(db2, db)); // gestion des plumes avec mongoDB
+app.use('/rdv', api_rdvLecture.default(db2, db)); // gestion des rdvLecture avec mongoDB
 
 
 //---------------------------------------------------------------------------
