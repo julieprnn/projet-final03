@@ -8,12 +8,12 @@ const api_authors_books = require('./api/api_authors_books');
 const api_plumes = require('./api/api_plumes');
 const api_rdvLecture = require('./api/api_rdvLecture');
 
-const path = require('path');
-const dbPath = path.resolve(__dirname, 'db_users_friends.db')
-
 
 
 //----------------------INITIALISATION DATABASE SQLITE3----------------------
+
+const path = require('path');
+const dbPath = path.resolve(__dirname, 'db_SQLite.db')
 
 console.log('Création de la bases de donnees SQLite...');
 const sqlite3 = require('sqlite3').verbose();
@@ -22,9 +22,7 @@ const db = new sqlite3.Database(dbPath, err => {
   if (err) {
     return console.error(err.message);
   }
-  console.log("Connexion réussie à la base de données 'db_users_friends.db'");
-
-console.log('DB sqlite3 ready!');
+  console.log("Connexion à SQLite3 réussie !");
 });
 
 

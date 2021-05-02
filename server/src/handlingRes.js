@@ -12,6 +12,7 @@ var HTTP_CODE = {
 }
 
 function handlingRes(res, statusCode, msg, data) {
+  console.log("\n");
   if (!msg){
     msg = HTTP_CODE[statusCode];
   }

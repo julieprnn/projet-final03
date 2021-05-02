@@ -218,6 +218,7 @@ function init(db) {
     // Instanciation de la classe Friends en passant en paramètre le database sqlite
     const friends = new Friends.default(db);
 
+    
 
     router
         // Envoie d'une demande d'amitié vers un lecteur cible

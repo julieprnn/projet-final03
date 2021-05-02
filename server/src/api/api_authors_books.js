@@ -1,7 +1,7 @@
 const express = require('express');
 const users = require("../entities/users");
 const AuthorsBooks = require("../entities/authors_books");
-const Followers = require("../entities/followers");
+const followers = require("../entities/followers");
 const handlingRes = require("../handlingRes");
 
 
@@ -129,9 +129,6 @@ function init(db) {
     //-------------------------------------------------------------------------------------------------
     //                                        Followers management
     //-------------------------------------------------------------------------------------------------
-
-    // Instanciation de la classe Followers en passant en paramètre le database sqlite
-    const followers = new Followers.default(db);
 
 
 
