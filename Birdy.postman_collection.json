@@ -1,0 +1,5908 @@
+{
+	"info": {
+		"_postman_id": "e0560dfe-c220-4651-be6b-8b947a05b075",
+		"name": "Birdy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users management",
+			"item": [
+				{
+					"name": "Population table",
+					"item": [
+						{
+							"name": "Création user",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login\":\"sdemanteau\", \"password\":\"B71A3\", \"lastname\":\"de Manteau\", \"firstname\":\"Sébastien\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"sdemanteau\", \"password\":\"B71A3\", \"lastname\":\"de Manteau\", \"firstname\":\"Sébastien\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-Jkp65+9y9LgTTwSvAQxNyJuTq+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 11:44:44 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du lecteur (user) dans la base de données users réussie!\"\n}"
+								},
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"benelapens\", \"password\":\"blueInk\", \"lastname\":\"Lapensée\", \"firstname\":\"Bénédicte\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-Jkp65+9y9LgTTwSvAQxNyJuTq+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 11:47:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du lecteur (user) dans la base de données users réussie!\"\n}"
+								},
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"estbon2001\", \"password\":\"indices\", \"lastname\":\"Bonisac\", \"firstname\":\"Esther\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-Jkp65+9y9LgTTwSvAQxNyJuTq+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 11:48:16 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du lecteur (user) dans la base de données users réussie!\"\n}"
+								},
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"ismatuil\", \"password\":\"nuagesBlanches\", \"lastname\":\"Tuil\", \"firstname\":\"Ismael\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-Jkp65+9y9LgTTwSvAQxNyJuTq+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 11:48:54 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du lecteur (user) dans la base de données users réussie!\"\n}"
+								},
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"maitreadele\", \"password\":\"jesuislareine\", \"lastname\":\"Richard\", \"firstname\":\"Adèle\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-Jkp65+9y9LgTTwSvAQxNyJuTq+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 11:49:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du lecteur (user) dans la base de données users réussie!\"\n}"
+								},
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"amelicor\", \"password\":\"champagne\", \"lastname\":\"Corcos\", \"firstname\":\"Amélie\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-Jkp65+9y9LgTTwSvAQxNyJuTq+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 11:49:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du lecteur (user) dans la base de données users réussie!\"\n}"
+								},
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"alexlamont\", \"password\":\"été86\", \"lastname\":\"Lamont\", \"firstname\":\"Alexandre\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-Jkp65+9y9LgTTwSvAQxNyJuTq+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 11:49:49 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du lecteur (user) dans la base de données users réussie!\"\n}"
+								},
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"cesarine21\", \"password\":\"lavieenrose\", \"lastname\":\"Vergnaud\", \"firstname\":\"Césarine\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-Jkp65+9y9LgTTwSvAQxNyJuTq+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 11:51:01 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du lecteur (user) dans la base de données users réussie!\"\n}"
+								},
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"beniciosetubal\", \"password\":\"boanoite\", \"lastname\":\"Cupertino\", \"firstname\":\"Diogo\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-Jkp65+9y9LgTTwSvAQxNyJuTq+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 11:51:50 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du lecteur (user) dans la base de données users réussie!\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Login user",
+					"item": [
+						{
+							"name": "login",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login\":\"maitreadele\", \"password\":\"jesuislareine\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"maitreadele\", \"password\":\"jesuislareine\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/login",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "cookieName=05327412632646067; Max-Age=900; Path=/; Expires=Sun, 02 May 2021 16:41:34 GMT; HttpOnly"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "61"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3d-crnf0CBKczKK8X4zdd0G0OFXe2Y\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 16:26:34 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Nouveau cookie crée avec succés!\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Modification mot de passe",
+					"item": [
+						{
+							"name": "modification mot de passe",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"password\":\"champagne\",\"newPassword\":\"lavande\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users/settings/modify-password/amelicor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"settings",
+										"modify-password",
+										"amelicor"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "modification mot de passe",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"champagne\",\"newPassword\":\"lavande\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/settings/modify-password/amelicor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"settings",
+												"modify-password",
+												"amelicor"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "62"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3e-c8VLxsfOL7pFStxBXdI6r9Af5fQ\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 16:40:22 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Mot de passe modifié avec succès!\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Désinscription user",
+					"item": [
+						{
+							"name": "Suppression user",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"password\":\"jesuislareine\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users/settings/delete-account/maitreadele",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"settings",
+										"delete-account",
+										"maitreadele"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Suppression user",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"jesuislareine\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/settings/delete-account/maitreadele",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"settings",
+												"delete-account",
+												"maitreadele"
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "81"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"51-Dx+L2mILQO8Tlom0WerevAAo+6E\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 03 May 2021 02:47:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 409,\n    \"message\": \"Désinscription lecteur (user) effectuée avec succès\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Errors handled",
+					"item": [
+						{
+							"name": "Création user",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login\":\"\", \"password\":\"23ruedelalormerie\", \"lastname\":\"Lamont\", \"firstname\":\"Diletta\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"beniciosetubal\", \"password\":\"été86\", \"lastname\":\"Cupertino\", \"firstname\":\"Diogo\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4b-lLViluKOM9gc59XVILO+wRIfzUw\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:35:38 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 409,\n    \"message\": \"Il existe déjà un lecteur (user) avec ce login\"\n}"
+								},
+								{
+									"name": "Création user",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"\", \"password\":\"23ruedelalormerie\", \"lastname\":\"Lamont\", \"firstname\":\"Diletta\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"status": "Precondition Failed",
+									"code": 412,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "73"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"49-j8zxXFVTU2Gi5cCrICI4BV+X5eM\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:37:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 412,\n    \"message\": \"Paramètre manquant. Usage : <login, password>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\":\"maitreadele\", \"password\":\"jesuislaprincesse\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/login",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"login"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "78"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4e-o/jWP0o65zkuILjOevI/dfLo+4U\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 16:24:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 404,\n    \"message\": \"Lecteur (user) non trouvé dans la base de données\"\n}"
+								}
+							]
+						},
+						{
+							"name": "modifier mot de passe",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"password\":\"campagne88\", \"newPassword\":\"lavande\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users/settings/modify-password/amelicor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"settings",
+										"modify-password",
+										"amelicor"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "modifier mot de passe",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"campagne88\", \"newPassword\":\"lavande\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/settings/modify-password/amelicor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"settings",
+												"modify-password",
+												"amelicor"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "46"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2e-AmUVxVsoXKuejzsNhFOdVfTOvZo\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 16:35:47 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 406,\n    \"message\": \"Password incorrecte\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Friends management",
+			"item": [
+				{
+					"name": "Population table",
+					"item": [
+						{
+							"name": "Ajout amitié",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login\" : \"sdemanteau\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users/benelapens",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"benelapens"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"sdemanteau\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/benelapens",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"benelapens"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35-CwAFEpnaRNNFKeYieSPehGCyE6g\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:43:45 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Demande d'amitié envoyée\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"beniciosetubal\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/benelapens",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"benelapens"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35-CwAFEpnaRNNFKeYieSPehGCyE6g\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:51:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Demande d'amitié envoyée\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"alexlamont\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/benelapens",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"benelapens"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35-CwAFEpnaRNNFKeYieSPehGCyE6g\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:51:57 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Demande d'amitié envoyée\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"cesarine21\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/maitreadele",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"maitreadele"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35-CwAFEpnaRNNFKeYieSPehGCyE6g\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:54:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Demande d'amitié envoyée\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"ismatuil\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/estbon2001",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"estbon2001"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35-CwAFEpnaRNNFKeYieSPehGCyE6g\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:55:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Demande d'amitié envoyée\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"estbon2001\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/sdemanteau",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"sdemanteau"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35-CwAFEpnaRNNFKeYieSPehGCyE6g\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:57:34 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Demande d'amitié envoyée\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"estbon2001\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/beniciosetubal",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"beniciosetubal"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35-CwAFEpnaRNNFKeYieSPehGCyE6g\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:58:27 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Demande d'amitié envoyée\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"benelapens\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/sdemanteau",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"sdemanteau"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "55"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"37-2TYpMEASg/H2XBgW4LMWsra5vdU\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 15:00:39 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Nouvelle amitié confirmée!\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Friendslist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/users/benelapens/friendsList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"benelapens",
+										"friendsList"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Friendslist",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:4000/users/sdemanteau/friendsList",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"sdemanteau",
+												"friendsList"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "84"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"54-MqD8jOhDxqHKbrLyRd1RC2HeIPg\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 15:13:33 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Liste d'amis trouvée dans la base de données\",\n    \"data\": \"2\"\n}"
+								},
+								{
+									"name": "Friendslist",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:4000/users/ismatuil/friendsList",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"ismatuil",
+												"friendsList"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "69"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"45-F77luTcae3ORI7/0qhqbcXaG4+w\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 15:14:22 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 404,\n    \"message\": \"Liste d'amis vide dans la base de données\"\n}"
+								},
+								{
+									"name": "Friendslist",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:4000/users/benelapens/friendsList",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"benelapens",
+												"friendsList"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "84"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"54-59ZJVXGYFwsOly9fKGdOpMMwbCc\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 15:14:52 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Liste d'amis trouvée dans la base de données\",\n    \"data\": \"1\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Acceptation amitié",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login2\" : \"alexlamont\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users/benelapens/notifications",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"benelapens",
+										"notifications"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Acceptation amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login2\" : \"alexlamont\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/benelapens/notifications",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"benelapens",
+												"notifications"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "54"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"36-1q84A2FC70HugeaVq9YFRvRAwHg\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 16:46:40 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Demande d'amitié acceptée\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Rejet amitié",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login2\" : \"ismatuil\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users/estbon2001/notifications",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"estbon2001",
+										"notifications"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Rejet amitié",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login2\" : \"ismatuil\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/estbon2001/notifications",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"estbon2001",
+												"notifications"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "66"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"42-ynP8z6oZXUarMnuhvGXJhbusGpo\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 16:50:28 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Demande d'amitié correctement rejetée\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Suppression amitié",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login2\" : \"sdemanteau\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users/benelapens/friendsList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"benelapens",
+										"friendsList"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Suppression amitié",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login2\" : \"sdemanteau\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/benelapens/friendsList",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"benelapens",
+												"friendsList"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "58"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3a-PNNRHgerx5lmlvIy6zg6mhI6o/s\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 16:52:57 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Amitié correctement supprimée\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Errors handled",
+					"item": [
+						{
+							"name": "Ajout amitié",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login\" : \"sdemanteau\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users/benelapens",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"benelapens"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"sdemanteau\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/dlamont",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"dlamont"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "78"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4e-o/jWP0o65zkuILjOevI/dfLo+4U\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:47:13 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 404,\n    \"message\": \"Lecteur (user) non trouvé dans la base de données\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"sdemanteau\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/sdemanteau",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"sdemanteau"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "59"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3b-y2LWo9HQEgAG2D9xIF/UjFldvAE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:47:54 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 406,\n    \"message\": \"Demande d'amitié non autorisée\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/sdemanteau",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"sdemanteau"
+											]
+										}
+									},
+									"status": "Precondition Failed",
+									"code": 412,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "63"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3f-RUwqGh2I/pd9MVL6rKlDfT1qhLg\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:49:10 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 412,\n    \"message\": \"Paramètre manquant. Usage : <login>\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"ismatuil\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												""
+											]
+										}
+									},
+									"status": "Precondition Failed",
+									"code": 412,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "73"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"49-j8zxXFVTU2Gi5cCrICI4BV+X5eM\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:49:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 412,\n    \"message\": \"Paramètre manquant. Usage : <login, password>\"\n}"
+								},
+								{
+									"name": "Ajout amitié",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"login\" : \"beniciosetubal\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/users/benelapens",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"users",
+												"benelapens"
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "110"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"6e-nbHQQOL2E52qlxE75XshipzN5Tw\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:52:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 409,\n    \"message\": \"Demande d'amitié non autorisée : amitié déjà existant dans la base de données\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Authors & Books management",
+			"item": [
+				{
+					"name": "Population tables",
+					"item": [
+						{
+							"name": "Création auteur",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"firstnameAuthor\" : \"Charles\", \"lastnameAuthor\" : \"Baudelaire\", \"biography\" : \"Luxe, calme et volupté\", \"image\" : \"baudelaire.jpeg\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/insertNewAuthor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"insertNewAuthor"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Création auteur",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Gustave\", \"lastnameAuthor\" : \"Flaubert\", \"biography\" : \"Madame Bovary c est moi\", \"image\" : \"flaubert.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewAuthor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewAuthor"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-7Bu/VXclbi+jIw+uOAUvUTrj6NE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 13:40:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion de l'auteur dans la base de données authors réussie!\"\n}"
+								},
+								{
+									"name": "Création auteur",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Charles\", \"lastnameAuthor\" : \"Baudelaire\", \"biography\" : \"Luxe, calme et volupté\", \"image\" : \"baudelaire.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewAuthor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewAuthor"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-7Bu/VXclbi+jIw+uOAUvUTrj6NE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 13:44:52 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion de l'auteur dans la base de données authors réussie!\"\n}"
+								},
+								{
+									"name": "Création auteur",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Arthur\", \"lastnameAuthor\" : \"Rimbaud\", \"biography\" : \"La jambe me fait mal\", \"image\" : \"rimbaud.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewAuthor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewAuthor"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-7Bu/VXclbi+jIw+uOAUvUTrj6NE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 13:51:40 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion de l'auteur dans la base de données authors réussie!\"\n}"
+								},
+								{
+									"name": "Création auteur",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Victor\", \"lastnameAuthor\" : \"Hugo\", \"biography\" : \"Misérable à place de Vosges\", \"image\" : \"hugo.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewAuthor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewAuthor"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-7Bu/VXclbi+jIw+uOAUvUTrj6NE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 13:53:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion de l'auteur dans la base de données authors réussie!\"\n}"
+								},
+								{
+									"name": "Création auteur",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"aliasAuthor\" : \"Colette\", \"biography\" : \"Je suis devenue un magasin\", \"image\" : \"colette.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewAuthor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewAuthor"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-7Bu/VXclbi+jIw+uOAUvUTrj6NE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 13:54:10 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion de l'auteur dans la base de données authors réussie!\"\n}"
+								},
+								{
+									"name": "Création auteur",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Ernest\", \"lastnameAuthor\" : \"Hemingway\", \"biography\" : \"Paris used to be better\", \"image\" : \"hemingway.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewAuthor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewAuthor"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "91"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b-7Bu/VXclbi+jIw+uOAUvUTrj6NE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:00:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion de l'auteur dans la base de données authors réussie!\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Création livre",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"firstnameAuthor\" : \"Colette\", \"lastnameAuthor\" : \"Hemingway\", \"title\" : \"Paris used to be better\", \"image\" : \"hemingway.jpeg\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/insertNewBook",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"insertNewBook"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Gustave\", \"lastnameAuthor\" : \"Flaubert\", \"title\" : \"Madame Bovary\", \"image\" : \"emma.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "86"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"56-q7MusE0yOeXbtxXCTGIzOVhQqA8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:13:07 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du livre dans la base de données books réussie!\"\n}"
+								},
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Arthur\", \"lastnameAuthor\" : \"Rimbaud\", \"title\" : \"Le bateau ivre\", \"image\" : \"bateau.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "86"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"56-q7MusE0yOeXbtxXCTGIzOVhQqA8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:14:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du livre dans la base de données books réussie!\"\n}"
+								},
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Victor\", \"lastnameAuthor\" : \"Hugo\", \"title\" : \"Les misérables\", \"image\" : \"cosette.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "86"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"56-q7MusE0yOeXbtxXCTGIzOVhQqA8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:15:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du livre dans la base de données books réussie!\"\n}"
+								},
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Victor\", \"lastnameAuthor\" : \"Hugo\", \"title\" : \"Notre-Dame de Paris\", \"image\" : \"quasimodo.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "86"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"56-q7MusE0yOeXbtxXCTGIzOVhQqA8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:16:00 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du livre dans la base de données books réussie!\"\n}"
+								},
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Victor\", \"lastnameAuthor\" : \"Hugo\", \"title\" : \"La Légende des siècles\", \"image\" : \"legende.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "86"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"56-q7MusE0yOeXbtxXCTGIzOVhQqA8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:17:16 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du livre dans la base de données books réussie!\"\n}"
+								},
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"aliasAuthor\" : \"Colette\", \"title\" : \"La maison de Claudine\", \"image\" : \"claudine.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "86"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"56-q7MusE0yOeXbtxXCTGIzOVhQqA8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:17:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du livre dans la base de données books réussie!\"\n}"
+								},
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Ernest\", \"lastnameAuthor\" : \"Hemingway\", \"title\" : \"Adieux aux armes\", \"image\" : \"catherine.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "86"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"56-q7MusE0yOeXbtxXCTGIzOVhQqA8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:20:54 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du livre dans la base de données books réussie!\"\n}"
+								},
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Ernest\", \"lastnameAuthor\" : \"Hemingway\", \"title\" : \"Le vieil homme et la mer\", \"image\" : \"lions.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "86"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"56-q7MusE0yOeXbtxXCTGIzOVhQqA8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:21:41 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du livre dans la base de données books réussie!\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Errors handled",
+					"item": [
+						{
+							"name": "Création auteur",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"firstnameAuthor\" : \"\", \"lastnameAuthor\" : \"Giordani\", \"biography\" : \"Passages et seuils\", \"image\" : \"alby.jpeg\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/insertNewAuthor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"insertNewAuthor"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Création auteur",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Charles\", \"lastnameAuthor\" : \"Baudelaire\", \"biography\" : \"Luxe, calme et volupté\", \"image\" : \"baudelaire.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewAuthor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewAuthor"
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "74"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4a-TyWjf/tXuGnG/C5Ejr0qpIvOq2E\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:29:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 409,\n    \"message\": \"Auteur déjà existant dans la base de données\"\n}"
+								},
+								{
+									"name": "Création auteur",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"\", \"lastnameAuthor\" : \"Giordani\", \"biography\" : \"Passages et seuils\", \"image\" : \"alby.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewAuthor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewAuthor"
+											]
+										}
+									},
+									"status": "Precondition Failed",
+									"code": 412,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "109"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"6d-MU7cKY4mgCAFjUzxl53tJFx2hcA\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:32:21 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 412,\n    \"message\": \"Paramètre manquant. Usage : <aliasAuthor ou (firstnameAuthor and lastnameAuthor)>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Création livre",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"firstnameAuthor\" : \"Charles\", \"lastnameAuthor\" : \"Baudelaire\", \"title\" : \"\", \"image\" : \"spleen.jpeg\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/insertNewBook",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"insertNewBook"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"aliasAuthor\" : \"Colette\", \"title\" : \"La maison de Claudine\", \"image\" : \"claudine.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "73"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"49-lpwwpwB15jMHYJ5R6To6lVNqO+0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 13:15:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 409,\n    \"message\": \"Livre déjà existant dans la base de données\"\n}"
+								},
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Lewis\", \"lastnameAuthor\" : \"Carroll\", \"title\" : \"Alice aux pays des merveilles\", \"image\" : \"Alice.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "70"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"46-PQ6r8PAV2x7lv/svf+DzjnfscrE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:30:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 404,\n    \"message\": \"Auteur non trouvé dans la base de données\"\n}"
+								},
+								{
+									"name": "Création livre",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"firstnameAuthor\" : \"Charles\", \"lastnameAuthor\" : \"Baudelaire\", \"title\" : \"\", \"image\" : \"spleen.jpeg\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/birdy/insertNewBook",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"birdy",
+												"insertNewBook"
+											]
+										}
+									},
+									"status": "Precondition Failed",
+									"code": 412,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "116"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"74-pL+SnK1/scUzSm51qP7G66hNIAg\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 14:34:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 412,\n    \"message\": \"Paramètre manquant. Usage : <title, aliasAuthor ou (firstnameAuthor and lastnameAuthor)>\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Followers management",
+			"item": [
+				{
+					"name": "Ajout livre ou auteur aux favoris",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"login\":\"estbon2001\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/birdy/search/authors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"birdy",
+								"search",
+								"authors",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ajout favoris",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login\":\"estbon2001\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/search/authors/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"search",
+										"authors",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-Gwd+k7brdaITFjBrwcsPQdJmvY4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 17:20:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Entité ajoutée aux favorites (follow)\"\n}"
+						},
+						{
+							"name": "Ajout favoris",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login\":\"estbon2001\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/search/books/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"search",
+										"books",
+										"8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-Gwd+k7brdaITFjBrwcsPQdJmvY4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 17:22:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Entité ajoutée aux favorites (follow)\"\n}"
+						},
+						{
+							"name": "Ajout favoris",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login\":\"sdemanteau\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/search/books/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"search",
+										"books",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-Gwd+k7brdaITFjBrwcsPQdJmvY4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 17:23:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Entité ajoutée aux favorites (follow)\"\n}"
+						},
+						{
+							"name": "Ajout favoris",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"login\":\"sdemanteau\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/search/books/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"search",
+										"books",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-Gwd+k7brdaITFjBrwcsPQdJmvY4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 17:24:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Entité ajoutée aux favorites (follow)\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Show liste favoris",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/rdv/6/rdvLectureList",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"rdv",
+								"6",
+								"rdvLectureList"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show livres favoris",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/sdemanteau/booksList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"sdemanteau",
+										"booksList"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-4fuO9+PkDoiYj7QjKp3DZ01S1P0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 17:38:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Liste de livres trouvée dans la base de données\",\n    \"data\": \"4,5\"\n}"
+						},
+						{
+							"name": "Show auteurs favoris",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/estbon2001/authorsList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"estbon2001",
+										"authorsList"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-3LeO3iXDl40Wi1qA3eKQ7TmANW0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 17:40:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Liste d'auteurs trouvée dans la base de données\",\n    \"data\": \"1\"\n}"
+						},
+						{
+							"name": "Show rdv favoris",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/rdv/6/rdvLectureList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"rdv",
+										"6",
+										"rdvLectureList"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "114"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"72-ZYDHuj3rg96sEDAKAyxWOPZ405M\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 19:12:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Liste de rdvLecture trouvée dans la base de données\",\n    \"data\": \"608ef51ac3880519c477d8b5\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ajout rdvLecture aux favoris",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\" : \"6\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/rdv/search/rdvLecture/608ef51ac3880519c477d8b5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"rdv",
+								"search",
+								"rdvLecture",
+								"608ef51ac3880519c477d8b5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ajout rdvLecture aux favoris",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\" : \"6\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/rdv/search/rdvLecture/608ef51ac3880519c477d8b5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"rdv",
+										"search",
+										"rdvLecture",
+										"608ef51ac3880519c477d8b5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-lXh6FSBlpktU2zI8r8W0ThyHEVg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 18:56:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"rdvLecture ajoutée aux favorites (follow)\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Plumes management",
+			"item": [
+				{
+					"name": "écrire une plume",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\": \"5\", \"typeText\": \"plume\", \"text\" :\"J ai lu Les misérables et je n ai rien compris\", \"image\" :\"\", \"entityId\":\"3\", \"typeEntity\":\"books\", \"spoiler\": false}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/plumes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"plumes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "écrire une plume",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\": \"5\", \"typeText\": \"plume\", \"text\" :\"J ai lu Les misérables et je n ai rien compris\", \"image\" :\"\", \"entityId\":\"3\", \"typeEntity\":\"books\", \"spoiler\": false}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/plumes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"plumes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-DZf7jrSmcFCdfkCTmquZ1j3IPfg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 17:47:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion de la plume dans la base de données plumes réussie!\"\n}"
+						},
+						{
+							"name": "écrire une plume",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\": \"5\", \"typeText\": \"plume\", \"text\" :\"Quasimodo aime Esmeralda\", \"image\" :\"\", \"entityId\":\"4\", \"typeEntity\":\"books\", \"spoiler\": true}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/plumes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"plumes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-DZf7jrSmcFCdfkCTmquZ1j3IPfg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 18:13:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion de la plume dans la base de données plumes réussie!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "écrire un commentaire",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\": \"9\", \"text\" :\"Et si...\", \"newText\":\"C'est vrai\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/plumes/608ee699cebc7225943031c1/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"plumes",
+								"608ee699cebc7225943031c1",
+								"comment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "écrire un commentaire",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\": \"1\", \"text\" :\"Car tu dois etudier un peu plus\", \"spoiler\": false}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/plumes/608ee5bbcebc7225943031c0/comment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"plumes",
+										"608ee5bbcebc7225943031c0",
+										"comment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d-ZDoe1XQSHa60WJecVlhBs7FZTUE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 17:58:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du commentaire dans la base de données plumes réussie!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Show mes plumes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/plumes/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"plumes",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show mes plumes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/plumes/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"plumes",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "836"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"344-0WNvaYKaZvIHYDjX2D0CKf5AcLU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 20:04:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Liste de plumes trouvée dans la base de données\",\n    \"data\": [\n        {\n            \"comments\": [],\n            \"spoiler\": false,\n            \"_id\": \"608eec0b3614e62100a9e0c6\",\n            \"userId\": \"5\",\n            \"typeText\": \"plume\",\n            \"text\": \"Quasimodo est sympa\",\n            \"image\": \"\",\n            \"date\": \"2021-05-02T18:14:35.655Z\",\n            \"entity_id\": \"4\",\n            \"typeEntity\": \"books\",\n            \"__v\": 0\n        },\n        {\n            \"comments\": [],\n            \"spoiler\": true,\n            \"_id\": \"608eebbf3614e62100a9e0c5\",\n            \"userId\": \"5\",\n            \"typeText\": \"plume\",\n            \"text\": \"Quasimodo aime Esmeralda\",\n            \"image\": \"\",\n            \"date\": \"2021-05-02T18:13:19.526Z\",\n            \"entity_id\": \"4\",\n            \"typeEntity\": \"books\",\n            \"__v\": 0\n        },\n        {\n            \"comments\": [\n                {\n                    \"userId\": \"1\",\n                    \"text\": \"Car tu dois etudier un peu plus\",\n                    \"spoiler\": false\n                }\n            ],\n            \"spoiler\": false,\n            \"_id\": \"608ee5bbcebc7225943031c0\",\n            \"userId\": \"5\",\n            \"typeText\": \"plume\",\n            \"text\": \"J ai lu Les misérables et je n ai rien compris\",\n            \"image\": \"\",\n            \"date\": \"2021-05-02T17:47:39.142Z\",\n            \"entity_id\": \"3\",\n            \"typeEntity\": \"books\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Modification d'une plume",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\": \"5\", \"typeText\": \"plume\", \"text\" :\"J ai lu Les misérables et je n ai rien compris concernant le rapport entre Quasimodo et Esmeralda\", \"image\" :\"\", \"entityId\":\"3\", \"typeEntity\":\"books\", \"spoiler\": true}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/plumes/608ee5bbcebc7225943031c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"plumes",
+								"608ee5bbcebc7225943031c0"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modification d'une plume",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\": \"5\", \"typeText\": \"plume\", \"text\" :\"J ai lu Les misérables et je n ai rien compris concernant le rapport entre Quasimodo et Esmeralda\", \"image\" :\"\", \"entityId\":\"3\", \"typeEntity\":\"books\", \"spoiler\": true}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/plumes/608ee5bbcebc7225943031c0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"plumes",
+										"608ee5bbcebc7225943031c0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-AYpRXgUKSeqRpQSAy97ryQpdcDo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 20:12:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Plume modifiée avec succès dans la base de données\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Suppression d'une plume",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/plumes/608ee5bbcebc7225943031c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"plumes",
+								"608ee5bbcebc7225943031c0"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Suppression d'une plume",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\" : \"5\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/plumes/608ee5bbcebc7225943031c0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"plumes",
+										"608ee5bbcebc7225943031c0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-asuElYCYEOGVlN6vOTjmBQZYAko\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 20:14:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Plume supprimée avec succès !\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Modification d'un commentaire",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\": \"9\", \"text\" :\"Moi aussi je veux rever des lions\", \"text\" :\"Moi aussi je veux rever des tigres\", \"spoiler\": false}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/plumes/608ee699cebc7225943031c1/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"plumes",
+								"608ee699cebc7225943031c1",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Suppression d'un commentaire",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\": \"9\", \"text\" : \"Moi aussi je veux rever des lions\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/plumes/608ee699cebc7225943031c1/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"plumes",
+								"608ee699cebc7225943031c1",
+								"comment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Suppression d'un commentaire",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\": \"9\", \"text\" : \"Moi aussi je veux rever des lions\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/plumes/608ee699cebc7225943031c1/comment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"plumes",
+										"608ee699cebc7225943031c1",
+										"comment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-z8jwkwqSHB48R2wi9wA+zcesxus\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 20:26:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Mise à jour ou suppression du commentaire dans la base de données réussie!\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "RdvLecture management",
+			"item": [
+				{
+					"name": "Population table",
+					"item": [
+						{
+							"name": "Création RdvLecture",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\":\"6\", \"speaker\":\"Mme Corcos\", \"title\":\"Les rêves du vieil homme\", \"text\":\"\", \"bookId\":\"8\", \"authorId\":\"6\", \"image\":\"lions.jpeg\", \"dateStart\":\"2021-05-18T16:00:00Z\", \"dateStop\":\"2021-05-18T19:00:00Z\", \"link\":\"www.zoom.com\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/rdv",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"rdv"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Création RdvLecture",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"userId\":\"6\", \"speaker\":\"Mme Corcos\", \"title\":\"Les rêves du vieil homme\", \"text\":\"\", \"bookId\":\"8\", \"authorId\":\"6\", \"image\":\"lions.jpeg\", \"dateStart\":\"2021-05-18T16:00:00Z\", \"dateStop\":\"2021-05-18T19:00:00Z\", \"link\":\"www.zoom.com\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/rdv",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"rdv"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "96"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"60-5Mj+UegPSWjcscBB6cnertCrsbE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 18:29:59 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Insertion du rdvLecture dans la base de données rdvLecture réussie!\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Modification RdvLecture",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\":\"6\", \"speaker\":\"Mme Corcos\", \"title\":\"Les couchemars du vieil homme\", \"text\":\"\", \"bookId\":\"8\", \"authorId\":\"6\", \"image\":\"lions.jpeg\", \"dateStart\":\"2021-05-18T16:00:00Z\", \"dateStop\":\"2021-05-18T18:00:00Z\", \"link\":\"www.zoom.com\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/rdv/608eefa63dfdf32858e7bed8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"rdv",
+										"608eefa63dfdf32858e7bed8"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Modification RdvLecture",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"userId\":\"6\", \"speaker\":\"Mme Corcos\", \"title\":\"Les couchemars du vieil homme\", \"text\":\" \", \"bookId\":\"8\", \"authorId\":\"6\", \"image\":\"lions.jpeg\", \"dateStart\":\"2021-05-18T16:00:00Z\", \"dateStop\":\"2021-05-18T18:00:00Z\", \"link\":\"www.zoom.com\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/rdv/608eefa63dfdf32858e7bed8",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"rdv",
+												"608eefa63dfdf32858e7bed8"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "89"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"59-f4SRo4yuywsJiF8i166zQGolzQI\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 18:36:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"Mise à jour du rdvLecture dans la base de données effectuée\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Suppression RdvLecture",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\":\"6\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/rdv/608eefa63dfdf32858e7bed8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"rdv",
+										"608eefa63dfdf32858e7bed8"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Suppression RdvLecture",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"userId\":\"6\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/rdv/608eefa63dfdf32858e7bed8",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"rdv",
+												"608eefa63dfdf32858e7bed8"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "59"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3b-JR4qtIe2oUUo+9svKNGTozgLmn4\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 18:43:33 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 200,\n    \"message\": \"rdvLecture annulé avec succès!\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Errors handled",
+					"item": [
+						{
+							"name": "Suppression RdvLecture",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"userId\":\"8\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/rdv/608eefa63dfdf32858e7bed8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"rdv",
+										"608eefa63dfdf32858e7bed8"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Suppression RdvLecture",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"userId\":\"8\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/rdv/608eefa63dfdf32858e7bed8",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"rdv",
+												"608eefa63dfdf32858e7bed8"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "69"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"45-LQeRMy7C8lHjt5DcUhKNcLNB7Os\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 02 May 2021 18:42:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 406,\n    \"message\": \"Modification du rdvLecture non authorisée\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Search management",
+			"item": [
+				{
+					"name": "Show all authors in DB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/birdy/search/authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"birdy",
+								"search",
+								"authors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show all authors in DB",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/birdy/search/authors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"search",
+										"authors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "973"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3cd-HCTotcEr1KEy++fmzn8rivpRQso\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 15:18:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Liste authors trouvée dans la base de données\",\n    \"data\": [\n        \"{\\\"id\\\":1,\\\"lastname\\\":\\\"Flaubert\\\",\\\"firstname\\\":\\\"Gustave\\\",\\\"alias\\\":null,\\\"biography\\\":\\\"Madame Bovary c est moi\\\",\\\"image\\\":\\\"flaubert.jpeg\\\"}\",\n        \"{\\\"id\\\":2,\\\"lastname\\\":\\\"Baudelaire\\\",\\\"firstname\\\":\\\"Charles\\\",\\\"alias\\\":null,\\\"biography\\\":\\\"Luxe, calme et volupté\\\",\\\"image\\\":\\\"baudelaire.jpeg\\\"}\",\n        \"{\\\"id\\\":3,\\\"lastname\\\":\\\"Rimbaud\\\",\\\"firstname\\\":\\\"Arthur\\\",\\\"alias\\\":null,\\\"biography\\\":\\\"La jambe me fait mal\\\",\\\"image\\\":\\\"rimbaud.jpeg\\\"}\",\n        \"{\\\"id\\\":4,\\\"lastname\\\":\\\"Hugo\\\",\\\"firstname\\\":\\\"Victor\\\",\\\"alias\\\":null,\\\"biography\\\":\\\"Misérable à place de Vosges\\\",\\\"image\\\":\\\"hugo.jpeg\\\"}\",\n        \"{\\\"id\\\":5,\\\"lastname\\\":null,\\\"firstname\\\":null,\\\"alias\\\":\\\"Colette\\\",\\\"biography\\\":\\\"Je suis devenue un magasin\\\",\\\"image\\\":\\\"colette.jpeg\\\"}\",\n        \"{\\\"id\\\":6,\\\"lastname\\\":\\\"Hemingway\\\",\\\"firstname\\\":\\\"Ernest\\\",\\\"alias\\\":null,\\\"biography\\\":\\\"Paris used to be better\\\",\\\"image\\\":\\\"hemingway.jpeg\\\"}\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Show all books in DB",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4000/birdy/search/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"birdy",
+								"search",
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show all books in DB",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:4000/birdy/search/books",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"birdy",
+										"search",
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "794"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31a-dvdv7vmyTYs6WjA7cMz41zJJ0zU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 15:19:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Liste books trouvée dans la base de données\",\n    \"data\": [\n        \"{\\\"id\\\":1,\\\"id_author\\\":1,\\\"title\\\":\\\"Madame Bovary\\\",\\\"image\\\":\\\"emma.jpeg\\\"}\",\n        \"{\\\"id\\\":2,\\\"id_author\\\":3,\\\"title\\\":\\\"Le bateau ivre\\\",\\\"image\\\":\\\"bateau.jpeg\\\"}\",\n        \"{\\\"id\\\":3,\\\"id_author\\\":4,\\\"title\\\":\\\"Les misérables\\\",\\\"image\\\":\\\"cosette.jpeg\\\"}\",\n        \"{\\\"id\\\":4,\\\"id_author\\\":4,\\\"title\\\":\\\"Notre-Dame de Paris\\\",\\\"image\\\":\\\"quasimodo.jpeg\\\"}\",\n        \"{\\\"id\\\":5,\\\"id_author\\\":4,\\\"title\\\":\\\"La Légende des siècles\\\",\\\"image\\\":\\\"legende.jpeg\\\"}\",\n        \"{\\\"id\\\":6,\\\"id_author\\\":5,\\\"title\\\":\\\"La maison de Claudine\\\",\\\"image\\\":\\\"claudine.jpeg\\\"}\",\n        \"{\\\"id\\\":7,\\\"id_author\\\":6,\\\"title\\\":\\\"Adieux aux armes\\\",\\\"image\\\":\\\"catherine.jpeg\\\"}\",\n        \"{\\\"id\\\":8,\\\"id_author\\\":6,\\\"title\\\":\\\"Le vieil homme et la mer\\\",\\\"image\\\":\\\"lions.jpeg\\\"}\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Show user's profil",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": [
+						{
+							"name": "Show user's profil",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/users/benelapens",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"benelapens"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "186"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ba-NfalgbJpmOWz1ZHEXsfmtI7zQ7Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 May 2021 16:14:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Obtention profil lecteur réussi\",\n    \"data\": \"{\\\"id\\\":2,\\\"login\\\":\\\"benelapens\\\",\\\"password\\\":\\\"blueInk\\\",\\\"lastname\\\":\\\"Lapensée\\\",\\\"firstname\\\":\\\"Bénédicte\\\"}\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Show notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/users/estbon2001/notifications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"estbon2001",
+								"notifications"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show notifications",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/users/estbon2001/notifications",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"estbon2001",
+										"notifications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "832"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"340-+tkWnRYjl56Zl++G1v+xJ+qApSU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 03 May 2021 01:51:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"Liste de notifications trouvée dans la base de données\",\n    \"data\": [\n        \"{\\\"id\\\":10,\\\"userId\\\":3,\\\"text\\\":\\\"Nouveau rdvLecture conseillé de la part de Alby!\\\",\\\"date\\\":\\\"2021-05-03 02:52:39\\\"}\",\n        \"{\\\"id\\\":9,\\\"userId\\\":3,\\\"text\\\":\\\"Nouveau rdvLecture conseillé de la part de Alby!\\\",\\\"date\\\":\\\"2021-05-03 02:46:22\\\"}\",\n        \"{\\\"id\\\":8,\\\"userId\\\":3,\\\"text\\\":\\\"ismatuil te propose une demande d'amitié\\\",\\\"date\\\":\\\"2021-05-02 22:42:48\\\"}\",\n        \"{\\\"id\\\":6,\\\"userId\\\":3,\\\"text\\\":\\\"Lecture conseillée : \\\\\\\"Exercices de style\\\\\\\"\\\",\\\"date\\\":\\\"2021-05-02 22:39:09\\\"}\",\n        \"{\\\"id\\\":5,\\\"userId\\\":3,\\\"text\\\":\\\"Nouveau rdvLecture conseillé de la part de Mme Corcos!\\\",\\\"date\\\":\\\"2021-05-02 22:38:25\\\"}\",\n        \"{\\\"id\\\":2,\\\"userId\\\":3,\\\"text\\\":\\\"Nouveau rdvLecture conseillé de la part de Mme Corcos\\\\\\\"!\\\",\\\"date\\\":\\\"2021-05-02 22:36:38\\\"}\"\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

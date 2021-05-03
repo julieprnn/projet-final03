@@ -1,5 +1,6 @@
 const express = require('express');
 const Plumes = require("../entities/plumes");
+const Users = require("../entities/users");
 const Followers = require("../entities/followers");
 const handlingRes = require("../handlingRes");
 
@@ -28,6 +29,9 @@ function init(db, dbSQL) {
     // Instanciation de la classe Plumes en passant en paramètre le database mongoDB
     const plumes = new Plumes.default(db);
 
+    // Instanciation de la classe users en passant en paramètre le database SQLite
+    const users = new Users.default(dbSQL);
+
     // Instanciation de la classe Followers en passant en paramètre le database SQLite
     const followers = new Followers.default(dbSQL);
 
@@ -44,20 +48,20 @@ function init(db, dbSQL) {
                     return;
                 } 
                 
+                // Envoi d'une notification à tous les lecteurs (user) intéressés par l'auteur ou le livre mentionné
+                let tabIdFollowers = await followers.getFollowersList(entityId, typeEntity);
+                if (tabIdFollowers.length != 0) {                    
+                    tabIdFollowers.forEach((row) => {
+                        users.addNotification(row, text);
+                    });
+                }
+
                 // Insertion de la plume dans la table plumes
                 if(!await plumes.postPlume(userId, typeText, text, image, date,  entityId, typeEntity, comments, spoiler)) {
                     handlingRes.default(res, 409, "Problème lors de l'insertion de la plume dans la base de données");
                     return;
                 } else {
                     handlingRes.default(res, 200, "Insertion de la plume dans la base de données plumes réussie!");
-                }
-
-                // Envoi d'une notification à tous les lecteurs (user) intéressés par l'auteur ou le livre mentionné
-                let tabIdFollowers = await followers.getFollowersList(entityId, typeEntity);
-                if (tabIdFollowers.length != 0) {                    
-                    tabIdFollowers.forEach((row) => {
-                        users.addNotification(row, "Lecture conseillée : '" + title + "'");
-                    });
                 }
             }
             catch (e) {
@@ -92,7 +96,7 @@ function init(db, dbSQL) {
                 } 
 
                 // Insertion du commentaire de la plume dans la table plumes
-                if(!await plumes.commentPlume(plumeId, userId, text, spoiler)) {
+                if (!await plumes.commentPlume(plumeId, userId, text, spoiler)) {
                     handlingRes.default(res, 409, "Problème lors de l'insertion du commentaire dans la base de données");
                     return;
                 } else {
@@ -114,7 +118,7 @@ function init(db, dbSQL) {
                 let { newSpoiler } = req.body;
 
                 // Erreur : paramètre manquant
-                if (!plumeId || !userId || !text || !newText || !spoiler) {
+                if (!userId || !text || !newText || !spoiler) {
                     handlingRes.default(res, 412, "Paramètre manquant. Usage : <userId, text, newText, spoiler>");
                     return;
                 } 

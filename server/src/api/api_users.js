@@ -52,7 +52,6 @@ function init(db) {
                 // Insertion du lecteur (user) dans la table users
                 if (!await users.create(login, password, lastname, firstname)) {
                     handlingRes.default(res, 409, "Problème lors de l'insertion du lecteur (user) dans la base de données");
-                    return;
                 } 
                 else {
                     handlingRes.default(res, 200, "Insertion du lecteur (user) dans la base de données users réussie!");
@@ -66,7 +65,7 @@ function init(db) {
 
     router
         // Login : accès à un compte utilisateur  
-        .post("/login", async (req, res, next) => {
+        .post("/login", async (req, res) => {
             try {
                 const { login, password } = req.body;
                 
@@ -212,6 +211,9 @@ function init(db) {
                         handlingRes.default(res, 409, "Désinscription lecteur (user) effectuée avec succès");
                     }
                 }
+                else {
+                    handlingRes.default(res, 406, "Mot de passe incorrect");
+                }
             }
             catch (e) {
                 // Erreur : erreur du server
@@ -262,7 +264,7 @@ function init(db) {
 
                 // Erreur : les deux lecteurs (user) sont déjà amis
                 if (await friends.existsFriendship(id1,id2)) {
-                    handlingRes.default(res, 409, "Demande d'amitié non autorisée : amitié déjà existant dans la base de données");
+                    handlingRes.default(res, 409, "Demande d'amitié non autorisée");
                     return;
                 }
 
@@ -271,22 +273,17 @@ function init(db) {
                 // Mise à jour de la table friends : demanding = 1, accepting = 1
                 if (await friends.existsDemanding(id2,id1)) {
                     await friends.acceptFriend(id1, id2);
+                    
                     handlingRes.default(res, 200, "Nouvelle amitié confirmée!");
-
-                    // Envoie d'une notification au lecteur demandeur (user)
-                    await users.addNotification(id2, login + " a accepté ta demande d'amitié"); 
                     return;
                 }
-                
+
                 // Insertion de la demande d'amitié dans la table friends : demanding = 1, accepting = 0
                 if (! await friends.addFriend(id1, id2)) {
                     handlingRes.default(res, 409, "Problème lors de l'insertion de la demande d'amitié dans la base de données");
                 } 
                 else {
                     handlingRes.default(res, 200, "Demande d'amitié envoyée");
-
-                    // Envoie d'une notification au lecteur cible (user)
-                    await users.addNotification(id2, login + " te propose une demande d'amitié"); 
                 }
             }
             catch (e) {
@@ -318,6 +315,14 @@ function init(db) {
                 // Obtention de l'identifiant du lecteur (user) dans la table users
                 let userId = await users.getIdUser(login);
 
+                // Paramètre manquant : initialisation par défaut
+                if (!n){
+                    n = 10;
+                }
+
+                // Suppression automatique des notifications anciennes de la table notifications : on ne garde que les n notifications les plus récentes
+                await users.deleteNotificationsList(userId, n);
+
                 // Obtention de la liste de notifications du lecteur (user)
                 let tabN = await users.getNotificationsList(userId)
                 if (tabN.length != 0) {                    
@@ -327,14 +332,6 @@ function init(db) {
                     handlingRes.default(res, 404, "Liste de notifications vide dans la base de données");
                     return;
                 }
-                
-                // Paramètre manquant : initialisation par défaut
-                if (!n){
-                    n = 10;
-                }
-
-                // Suppression automatique des notifications anciennes de la table notifications : on ne garde que les n notifications les plus récentes
-                await users.deleteNotificationsList(userId, n);
             }
             catch (e) {
                 // Erreur : erreur du server
@@ -378,9 +375,6 @@ function init(db) {
                 } 
                 else{
                     handlingRes.default(res, 200, "Demande d'amitié acceptée");
-
-                    // Envoie d'une notification au lecteur demandeur (user)
-                    await users.addNotification(id2, login + " a accepté ta demande d'amitié"); 
                 }
             }
             catch (e) {

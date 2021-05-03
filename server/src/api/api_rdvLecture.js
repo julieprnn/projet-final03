@@ -1,6 +1,6 @@
 const express = require('express');
 const RdvLecture = require("../entities/RdvLecture");
-const users = require("../entities/users");
+const Users = require("../entities/users");
 const Followers = require("../entities/followers");
 const AuthorsBooks = require("../entities/authors_books");
 const handlingRes = require("../handlingRes");
@@ -30,6 +30,9 @@ function init(db, dbSQL) {
     // Instanciation de la classe RdvLecture en passant en paramètre le database mongoDB
     const rdvLecture = new RdvLecture.default(db);
 
+    // Instanciation de la classe Users en passant en paramètre le database SQLite
+    const users = new Users.default(dbSQL);
+
     // Instanciation de la classe Followers en passant en paramètre le database SQLite
     const followers = new Followers.default(dbSQL);
 
@@ -39,6 +42,7 @@ function init(db, dbSQL) {
     router
         // Création d'un nouveau rdvLecture
         .put("/", async (req, res) => {
+            
             try{
                 const { userId, speaker, title, text, bookId, authorId, image, dateStart, dateStop, link} = req.body;
 
@@ -60,16 +64,8 @@ function init(db, dbSQL) {
                     return;
                 }
 
-                // Insertion du rdvLecture dans la table rdvlectures
-                if(!await rdvLecture.createRdvLecture(userId, speaker, title, text, bookId, authorId, image, dateStart, dateStop, link)) {
-                    handlingRes.default(res, 409, "Problème lors de l'insertion du rdvLecture dans la base de données");
-                    return;
-                } else {
-                    handlingRes.default(res, 200, "Insertion du rdvLecture dans la base de données rdvLecture réussie!");
-                }
-
                 // Envoi d'une notification à tous les lecteurs (user) intéressés par l'auteur mentionné
-                let tabIdFollowers = await users.getFollowersList(authorId, "authors");
+                let tabIdFollowers = await followers.getFollowersList(authorId, "authors");
                 if (tabIdFollowers.length != 0) {                    
                     tabIdFollowers.forEach((row) => {
                         users.addNotification(row, "Nouveau rdvLecture conseillé de la part de " + speaker + "!");
@@ -77,11 +73,18 @@ function init(db, dbSQL) {
                 }
 
                 // Envoi d'une notification à tous les lecteurs (user) intéressés par le livre mentionné
-                tabIdFollowers = await users.getFollowersList(bookId, "books");
+                tabIdFollowers = await followers.getFollowersList(bookId, "books");
                 if (tabIdFollowers.length != 0) {                    
                     tabIdFollowers.forEach((row) => {
                         users.addNotification(row, "Nouveau rdvLecture conseillé de la part de " + speaker + "!");
                     });
+                }
+
+                // Insertion du rdvLecture dans la table rdvlectures
+                if(! await rdvLecture.createRdvLecture(userId, speaker, title, text, bookId, authorId, image, dateStart, dateStop, link)) {
+                    handlingRes.default(res, 409, "Problème lors de l'insertion du rdvLecture dans la base de données");
+                } else {
+                    handlingRes.default(res, 200, "Insertion du rdvLecture dans la base de données rdvLecture réussie!");
                 }
             } 
             catch (e) {
